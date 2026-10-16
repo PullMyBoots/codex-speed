@@ -1,16 +1,16 @@
 # codex-speed
 
-给 Codex CLI 加上实时 `tokens/s` 状态栏。原生状态栏保留，工具调用、正文和可见原始思考都能测速。
+Add a live `tokens/s` status line to Codex CLI. Measure text, tool arguments, and exposed raw reasoning while preserving the native status line.
 
-## 最简单的安装方式
+## Quick install
 
-把下面这句话发给你正在使用的 Codex：
+Send this to your current Codex:
 
-> 帮我把 https://github.com/PullMyBoots/codex-speed 安装到当前 Codex。请先读仓库的 AGENTS.md，按说明完成安装和验证，保留我的模型配置与登录信息。
+> Install https://github.com/PullMyBoots/codex-speed into my current Codex. Read the repository's AGENTS.md first, complete the installation and verification, and preserve my model settings and login information.
 
-Codex 会负责下载仓库、检查依赖、运行安装脚本并验证。你最后只需要**重启 Codex**。
+Codex will clone the repository, check dependencies, run the installer, and verify the result. Once it finishes, **restart Codex**.
 
-也可以自己运行：
+Or install manually:
 
 ```bash
 git clone https://github.com/PullMyBoots/codex-speed.git
@@ -18,11 +18,11 @@ cd codex-speed
 bash install.sh
 ```
 
-安装完成后运行 `codex-speed`；若 `~/.local/bin` 在 PATH 前面，也可继续运行 `codex`。
+After installation, run `codex-speed`. You can also keep using `codex` if `~/.local/bin` comes before other Codex installations in your PATH.
 
-**首次安装需要编译修改后的 CLI，并非只写一行配置。** 原版 Codex 没有我们需要的外接状态栏与逐段测速接口。仓库只有脚本和源码补丁，不捆绑 Codex、Node 或 Rust；安装时会下载上游源码、Rust 和构建依赖，可能耗时几十分钟，占用 20 GiB 以上磁盘空间。有原生测速接口的已安装版本会直接复用，跳过编译。
+**The first installation builds a modified CLI.** Stock Codex lacks the external status line and streaming metrics interfaces this customization needs. This repository contains scripts and a source patch; it does not bundle Codex, Node, or Rust. Installation downloads upstream source, Rust, and build dependencies, may take tens of minutes, and can use more than 20 GiB of disk space. An existing installation with the required native metrics support is reused without compilation.
 
-## 显示效果
+## Display and labels
 
 ```text
 Decode (think): ~128.3 t/s | Out: 2,048
@@ -31,51 +31,51 @@ Decode: ~123.8 t/s        | Out: 2,048
 Decode (last): ~122.1 t/s | Out: 2,048
 ```
 
-上面是同一条测速行在不同阶段的示例，含义如下：
+These are examples of the same speed line at different stages:
 
-| 显示 | 含义 |
+| Label | Meaning |
 |---|---|
-| `Decode` | 模型正在生成普通回复正文。 |
-| `Decode (tool)` | 模型正在生成工具调用的参数，例如命令或代码；工具实际执行的时间不计入。 |
-| `Decode (think)` | 模型正在输出服务端实际流出的原始思考文本；未暴露的隐藏思考无法统计。 |
-| `Decode (last)` | 当前没有新的有效测速，保留最近一次有效结果；不代表模型此刻仍在生成，也不专指最终回复。 |
-| `Summary` | 模型正在生成思考摘要，按摘要流单独测速。 |
-| `Decode (stopped)` / `Summary (stopped)` | 生成已中断，显示中断时保留的测速结果。 |
+| `Decode` | The model is generating ordinary response text. |
+| `Decode (tool)` | The model is generating tool arguments, such as a command or code. Tool execution time is excluded. |
+| `Decode (think)` | The model is streaming raw reasoning exposed by the server. Hidden reasoning cannot be measured. |
+| `Decode (last)` | No new valid measurement is available, so the latest valid result is retained. This does not mean the model is still generating, and it is not limited to the final reply. |
+| `Summary` | The model is generating a reasoning summary, measured separately from raw reasoning. |
+| `Decode (stopped)` / `Summary (stopped)` | Generation was interrupted; the retained measurement is shown. |
 
-例如，有可见思考时，一次工具调用可能经历：`think`（生成思考）→ `tool`（生成命令参数）→ `last`（等待工具执行）→ `Decode`（生成回答）→ `last`（生成结束）。如果此前没有有效样本，等待时会显示 `—`。
+For example, a tool call with exposed reasoning may go through: `think` (generating reasoning) → `tool` (generating command arguments) → `last` (waiting for the tool) → `Decode` (generating the answer) → `last` (generation finished). If no valid sample exists yet, the waiting state shows `—`.
 
-`t/s` 表示每秒 token 数；`Out` 是累计输出 token 用量，不是实时速度。
+`t/s` means tokens per second. `Out` is cumulative output token usage, separate from the live speed measurement.
 
-- 同一测速口径覆盖正文、工具参数和服务端流出的原始思考。
-- 等待首 token、工具执行、请求间隔不计时；等待时保留最近一次有效值并标记 `last`。
-- 有数据时最多每 100 ms 发布一次，使用约 1 秒窗口；终端可能合并刷新。
-- 思考摘要单独显示为 `Summary`，不冒充完整推理速度。
-- `~` 是客户端分词与网络时间估算。官方隐藏推理无法实时观测；不同模型 tokenizer、特殊 token、网络缓冲均影响准确性。它不是服务端硬件计时。
+- Text, tool arguments, and exposed raw reasoning use the same measurement approach.
+- First-token waiting, tool execution, and gaps between requests are excluded. While waiting, the latest valid result is retained with the `last` label.
+- With incoming data, metrics are published at most once every 100 ms using an approximately one-second window. The terminal may combine refreshes.
+- Reasoning summaries have their own `Summary` label and do not represent the full reasoning stream.
+- `~` marks an estimate based on client-side tokenization and stream arrival times. OpenAI's hidden reasoning cannot be observed in real time. Model tokenizer differences, special tokens, and network buffering affect accuracy. This is not a measurement of server hardware throughput.
 
-## 安装说明
+## Installation notes
 
-- Python **3.9+**、Git、C/C++ 构建工具。无需 Node/npm。Rust 缺失时由脚本安装到用户目录。
-- 已验证 Linux x86_64。macOS 提供源码构建路径，尚未实机验证；Windows 请用 WSL2，未提供原生 Windows 安装器。
-- 不设 Codex 版本白名单，不按版本范围拒绝安装；补丁基于 **0.163.0**。其他源码标签会实际尝试应用补丁，冲突时给出错误，不自动降级。没有启动时版本探测。
-- 继续使用你的 `~/.codex` 或 `CODEX_HOME`。不复制作者的 API key、路由或个人配置，不修改模型选择、登录信息、原生 `/statusline` 选择、代理或 shell 启动文件。
-- 修改版 CLI 放在 `~/.local/share/codex-speed`，构建缓存放在 `~/.cache/codex-speed`，启动入口放在 `~/.local/bin`。已有同名入口先备份，原来的 npm/native Codex 二进制保留。
-- 普通终端启动使用独立后端，以载入本包原生事件；显式 `--remote` 保留，但远端后端也需支持测速事件。
+- Requires Python **3.9+**, Git, and C/C++ build tools. Node/npm is not required. The installer installs Rust in your user directory if needed.
+- Tested on Linux x86_64. A source build path is provided for macOS but has not been tested on a Mac. On Windows, use WSL2; there is no native Windows installer.
+- There is no Codex version allowlist or supported-version range check. The patch is based on **0.163.0**. For other source tags, the installer attempts to apply the patch and reports actual conflicts without automatically downgrading. There are no startup version probes.
+- Your existing `~/.codex` or `CODEX_HOME` is used. No author API keys, routing, or personal settings are copied. Your model selection, login information, native `/statusline` choices, proxy settings, and shell startup files are preserved.
+- The modified CLI is installed in `~/.local/share/codex-speed`, build caches in `~/.cache/codex-speed`, and launchers in `~/.local/bin`. Existing launchers with the same names are backed up first. Original npm/native Codex binaries are preserved.
+- Ordinary terminal launches use a private backend to load the native metrics events. Explicit `--remote` connections are preserved, but the remote backend must also support those events.
 
-依赖安装、网络、源码选择和常见问题见 [详细安装说明](docs/INSTALL.md)。给 AI 编码助手的完整执行步骤见 [AGENTS.md](AGENTS.md)。
+For dependencies, networking, source selection, and troubleshooting, see the [installation guide](docs/INSTALL.md) (Chinese). Complete instructions for AI coding assistants are in [AGENTS.md](AGENTS.md) (Chinese).
 
-## 卸载
+## Uninstall
 
 ```bash
 ~/.local/bin/codex-speed-uninstall
 ```
 
-恢复安装前的命令入口，保留 Codex 配置。启动脚本若被手动修改，卸载器会停止，避免覆盖你的改动。构建缓存单独保留，可在确认不再需要后删除 `~/.cache/codex-speed`。
+This restores the previous launchers and preserves your Codex configuration. If a managed launcher has been edited manually, the uninstaller stops to protect your changes. Build caches are retained separately; you can delete `~/.cache/codex-speed` when no longer needed.
 
-## 维护与验证
+## Development and verification
 
 ```bash
 python3 -m unittest discover -s tests -v
 bash install.sh doctor
 ```
 
-原生实现及测试在 `patches/codex.patch`，完整构建方法由安装器实现。补丁使用了 [cxstatusline](https://github.com/adrijshikhar/cxstatusline) 的桥接代码；本仓库的轻量渲染器只依赖 Python 标准库。首次发布的验证范围见 [VALIDATION.md](docs/VALIDATION.md)。
+The native implementation and its tests are in `patches/codex.patch`; the installer handles the full build process. The patch includes bridge code adapted from [cxstatusline](https://github.com/adrijshikhar/cxstatusline). This repository's lightweight renderer uses only the Python standard library. See [VALIDATION.md](docs/VALIDATION.md) (Chinese) for the scope and limitations of the initial release validation.
