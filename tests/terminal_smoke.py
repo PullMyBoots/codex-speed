@@ -135,7 +135,7 @@ status_line = ["model-with-reasoning", "current-dir", "used-tokens"]
 (profile / 'config.toml').write_text(config)
 renderer = work / 'renderer.py'
 artifact = base.parent / 'staged-generation.txt'
-expected_version = '0.163.0'
+expected_version = os.environ.get('CODEX_SPEED_EXPECTED_VERSION', '0.163.0')
 python = sys.executable
 cx = base.parent / 'render.py'
 renderer.write_text(f'''import json, os, sys

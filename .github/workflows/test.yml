@@ -11,3 +11,18 @@ jobs:
         with:
           python-version: '3.9'
       - run: python3 -m unittest discover -s tests -v
+  source-patches:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        codex: ['0.160.0', '0.160.1', '0.161.0', '0.162.0', '0.162.1', '0.163.0']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - name: Check patch against clean upstream source
+        run: |
+          git clone --quiet --depth 1 --single-branch --branch "rust-v${{ matrix.codex }}" https://github.com/openai/codex.git "$RUNNER_TEMP/codex"
+          python3 install.py --check-source "$RUNNER_TEMP/codex"

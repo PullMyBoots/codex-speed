@@ -19,7 +19,8 @@ class TerminalTest(unittest.TestCase):
         prefix=work/"install with 'quotes'";bin_dir=work/"bin with 'quotes'"
         subprocess.run([sys.executable,str(repo/'install.py'),'--from-build',os.environ['CODEX_SPEED_TEST_PACKAGE'],'--prefix',str(prefix),'--bin-dir',str(bin_dir),'--no-codex-link'],check=True)
         result=work/'result.json'
-        env=dict(os.environ,CODEX_STATUSLINE_SMOKE_BINARY=str(bin_dir/'codex-speed'),CODEX_SPEED_SMOKE_RESULT=str(result))
+        version=json.loads((Path(os.environ['CODEX_SPEED_TEST_PACKAGE'])/'codex-package.json').read_text())['version']
+        env=dict(os.environ,CODEX_STATUSLINE_SMOKE_BINARY=str(bin_dir/'codex-speed'),CODEX_SPEED_SMOKE_RESULT=str(result),CODEX_SPEED_EXPECTED_VERSION=version)
         subprocess.run([sys.executable,str(repo/'tests/terminal_smoke.py')],env=env,check=True)
         report=json.loads(result.read_text())
         self.assertTrue(report['all_decode_phases_observed'])

@@ -1,0 +1,4115 @@
+diff --git a/codex-rs/Cargo.lock b/codex-rs/Cargo.lock
+index 1cee1174c..e202b2d30 100644
+--- a/codex-rs/Cargo.lock
++++ b/codex-rs/Cargo.lock
+@@ -254,7 +254,7 @@ version = "1.1.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc"
+ dependencies = [
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -265,7 +265,7 @@ checksum = "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d"
+ dependencies = [
+  "anstyle",
+  "once_cell_polyfill",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -276,7 +276,7 @@ checksum = "2a4385e2e34eb35d6b3efe798b9eb88096925d87726c0798709bf56d9ed84af3"
+ 
+ [[package]]
+ name = "app_test_support"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -1441,13 +1441,13 @@ dependencies = [
+ 
+ [[package]]
+ name = "bstr"
+-version = "1.12.1"
++version = "1.13.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "63044e1ae8e69f3b5a92c736ca6269b8d12fa7efe39bf34ddb06d102cf0e2cab"
++checksum = "6bb31b46c14244e20ee9984b11bf5c992b91fb6939fea616e3512c8baecdbe5f"
+ dependencies = [
+  "memchr",
+  "regex-automata",
+- "serde",
++ "serde_core",
+ ]
+ 
+ [[package]]
+@@ -1895,7 +1895,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-core",
+@@ -1907,7 +1907,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-graph-store"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-state",
+@@ -1922,7 +1922,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-identity"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -1942,7 +1942,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-message-board-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -1965,7 +1965,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-message-board-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "caseless",
+@@ -1988,7 +1988,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-agent-roles"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-config",
+  "codex-file-system",
+@@ -2001,7 +2001,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-analytics"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-app-server-protocol",
+  "codex-git-utils",
+@@ -2024,7 +2024,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-ansi-escape"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "ansi-to-tui",
+  "pretty_assertions",
+@@ -2035,7 +2035,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-api"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "assert_matches",
+@@ -2073,7 +2073,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "app_test_support",
+@@ -2187,7 +2187,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-app-server",
+  "codex-app-server-protocol",
+@@ -2214,7 +2214,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server-daemon"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "blake3",
+@@ -2240,7 +2240,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server-protocol"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-app-server-protocol-noop-macros",
+@@ -2274,11 +2274,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server-protocol-noop-macros"
+-version = "0.0.0"
++version = "0.162.0"
+ 
+ [[package]]
+ name = "codex-app-server-test-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -2300,7 +2300,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-app-server-transport"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "axum",
+  "base64 0.22.1",
+@@ -2342,7 +2342,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-apply-patch"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "assert_cmd",
+@@ -2362,7 +2362,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-arg0"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-apply-patch",
+@@ -2386,7 +2386,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-async-utils"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "rand 0.9.3",
+@@ -2396,7 +2396,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-attachment-store"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "serde",
+@@ -2406,7 +2406,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-aws-auth"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "aws-config",
+  "aws-credential-types",
+@@ -2432,7 +2432,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-backend-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-api",
+@@ -2452,7 +2452,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-backend-openapi-models"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "serde",
+  "serde_json",
+@@ -2461,7 +2461,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-build-info"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-install-context",
+  "pretty_assertions",
+@@ -2474,7 +2474,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-bwrap"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "cc",
+  "libc",
+@@ -2483,7 +2483,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-chatgpt"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -2505,7 +2505,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cli"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "app_test_support",
+@@ -2607,7 +2607,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-http-client",
+  "eventsource-stream",
+@@ -2621,7 +2621,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cloud-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "async-stream",
+@@ -2645,7 +2645,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cloud-config"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "chrono",
+@@ -2671,7 +2671,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cloud-tasks"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -2704,7 +2704,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cloud-tasks-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -2719,7 +2719,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-cloud-tasks-mock-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "chrono",
+  "codex-cloud-tasks-client",
+@@ -2728,7 +2728,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-code-mode"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-code-mode-protocol",
+  "codex-http-client",
+@@ -2751,7 +2751,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-code-mode-host"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "axum",
+@@ -2780,7 +2780,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-code-mode-protocol"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "glob",
+@@ -2798,7 +2798,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-code-mode-runtime"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-code-mode-protocol",
+@@ -2816,11 +2816,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-collaboration-mode-templates"
+-version = "0.0.0"
++version = "0.162.0"
+ 
+ [[package]]
+ name = "codex-config"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -2870,7 +2870,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-config-schema"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -2879,7 +2879,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-connectors"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "arc-swap",
+@@ -2901,7 +2901,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-connectors-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-connectors",
+  "codex-core-plugins",
+@@ -2915,7 +2915,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-context-fragments"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-utils-string",
+@@ -2925,7 +2925,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-core"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "arc-swap",
+@@ -3046,6 +3046,7 @@ dependencies = [
+  "test-case",
+  "test-log",
+  "thiserror 2.0.18",
++ "tiktoken-rs",
+  "tokio",
+  "tokio-tungstenite",
+  "tokio-util",
+@@ -3067,7 +3068,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-core-api"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-analytics",
+  "codex-app-server-protocol",
+@@ -3090,7 +3091,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-core-plugin-common"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-utils-absolute-path",
+  "semver",
+@@ -3101,7 +3102,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-core-plugins"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -3158,7 +3159,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-diagnostics"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "libc",
+  "pretty_assertions",
+@@ -3166,7 +3167,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-exec"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "assert_cmd",
+@@ -3218,7 +3219,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-exec-server"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "arc-swap",
+@@ -3287,7 +3288,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-exec-server-protocol"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-file-system",
+@@ -3304,7 +3305,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-exec-server-test-support"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-exec-server",
+@@ -3319,7 +3320,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-execpolicy"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -3337,7 +3338,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-experimental-api-macros"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+@@ -3346,7 +3347,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-extension-api"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-api",
+  "codex-config",
+@@ -3368,7 +3369,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-extension-items"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-utils-absolute-path",
+  "pretty_assertions",
+@@ -3380,7 +3381,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-external-agent-migration"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "chrono",
+  "codex-analytics",
+@@ -3410,7 +3411,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-features"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-network-proxy",
+  "codex-protocol",
+@@ -3424,7 +3425,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-feedback"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "bytes",
+@@ -3451,7 +3452,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-file-search"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -3467,7 +3468,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-file-system"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "bytes",
+  "codex-protocol",
+@@ -3479,7 +3480,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-file-watcher"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "notify",
+  "pretty_assertions",
+@@ -3490,7 +3491,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-git-attribution"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-backend-client",
+  "codex-extension-api",
+@@ -3503,7 +3504,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-git-utils"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -3531,7 +3532,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-goal-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -3556,7 +3557,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-guardian-context"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-context-fragments",
+  "codex-history",
+@@ -3568,7 +3569,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-guardian-reviewer"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-analytics",
+@@ -3593,7 +3594,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-guardian-v2"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-analytics",
+@@ -3630,7 +3631,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-history"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-protocol",
+@@ -3642,7 +3643,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-history-notes-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-analytics",
+  "codex-client",
+@@ -3667,7 +3668,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-home"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-extension-api",
+  "codex-utils-absolute-path",
+@@ -3679,7 +3680,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-hooks"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "async-channel",
+@@ -3707,7 +3708,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-http-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "bytes",
+  "codex-utils-cargo-bin",
+@@ -3743,7 +3744,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-image-generation-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-api",
+@@ -3771,7 +3772,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-install-context"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-utils-absolute-path",
+  "codex-utils-home-dir",
+@@ -3784,7 +3785,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-keyring-store"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "keyring",
+  "pretty_assertions",
+@@ -3795,7 +3796,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-linux-sandbox"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "clap",
+  "codex-core",
+@@ -3824,7 +3825,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-lmstudio"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-core",
+  "codex-http-client",
+@@ -3838,7 +3839,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-login"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -3884,7 +3885,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-mcp"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "arc-swap",
+@@ -3924,7 +3925,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-mcp-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "axum",
+@@ -3957,7 +3958,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-memories-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-core",
+  "codex-extension-api",
+@@ -3979,7 +3980,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-memories-read"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-shell-command",
+@@ -3989,7 +3990,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-memories-write"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -4026,7 +4027,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-mermaid"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "insta",
+  "pretty_assertions",
+@@ -4035,7 +4036,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-message-history"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-config",
+  "memchr",
+@@ -4049,7 +4050,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-model-provider"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "chrono",
+@@ -4083,7 +4084,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-model-provider-info"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-client",
+  "codex-protocol",
+@@ -4101,7 +4102,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-models-manager"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "chrono",
+  "codex-http-client",
+@@ -4120,7 +4121,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-mxc-sandbox"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "appcontainer_common",
+@@ -4142,7 +4143,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-network-proxy"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -4191,7 +4192,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-ollama"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "assert_matches",
+  "async-stream",
+@@ -4211,7 +4212,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-otel"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "bytes",
+  "chrono",
+@@ -4248,7 +4249,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-otel-trace-websocket"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "axum",
+@@ -4259,7 +4260,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-plugin"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-config",
+  "codex-core-plugin-common",
+@@ -4274,7 +4275,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-process-hardening"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "libc",
+  "pretty_assertions",
+@@ -4282,7 +4283,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-prompts"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-collaboration-mode-templates",
+@@ -4299,7 +4300,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-protocol"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chardetng",
+@@ -4344,7 +4345,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-queue-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-core",
+@@ -4365,7 +4366,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-realtime-webrtc"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-build-info",
+@@ -4384,7 +4385,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-response-debug-context"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-api",
+@@ -4395,7 +4396,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-responses-api-proxy"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -4412,7 +4413,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-rmcp-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "axum",
+@@ -4463,7 +4464,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-rollout"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -4494,7 +4495,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-rollout-trace"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-code-mode",
+@@ -4510,7 +4511,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-sandboxing"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-mxc-sandbox",
+@@ -4538,7 +4539,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-secrets"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "age",
+  "anyhow",
+@@ -4559,7 +4560,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-shell-command"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -4582,7 +4583,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-shell-escalation"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -4602,7 +4603,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-skills"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-shell-command",
+@@ -4619,7 +4620,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-skills-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "assert_matches",
+  "blake3",
+@@ -4657,7 +4658,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-state"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "chrono",
+@@ -4684,7 +4685,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-stdio-to-uds"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-uds",
+@@ -4696,7 +4697,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-tcp-tunnel"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "bytes",
+@@ -4717,7 +4718,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-terminal-detection"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "tracing",
+@@ -4725,7 +4726,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-test-binary-support"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-arg0",
+  "tempfile",
+@@ -4733,7 +4734,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-thread-manager-sample"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "clap",
+@@ -4744,7 +4745,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-thread-store"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "chrono",
+  "codex-app-server-protocol",
+@@ -4775,7 +4776,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-tools"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "bitflags 2.13.1",
+  "codex-code-mode",
+@@ -4801,7 +4802,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-tui"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "app_test_support",
+@@ -4927,7 +4928,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-uds"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "async-io",
+  "libc",
+@@ -4941,7 +4942,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-user-verification"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "core-foundation 0.10.1",
+@@ -4961,7 +4962,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-absolute-path"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "dirs",
+  "dunce",
+@@ -4975,14 +4976,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-approval-presets"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+ ]
+ 
+ [[package]]
+ name = "codex-utils-audio"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-protocol",
+@@ -4996,7 +4997,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-cache"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "lru",
+  "sha1 0.10.6",
+@@ -5005,7 +5006,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-cargo-bin"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "assert_cmd",
+  "runfiles",
+@@ -5014,7 +5015,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-cli"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "clap",
+  "codex-protocol",
+@@ -5026,15 +5027,15 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-elapsed"
+-version = "0.0.0"
++version = "0.162.0"
+ 
+ [[package]]
+ name = "codex-utils-fuzzy-match"
+-version = "0.0.0"
++version = "0.162.0"
+ 
+ [[package]]
+ name = "codex-utils-git-discovery"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-git-utils",
+  "codex-utils-absolute-path",
+@@ -5047,7 +5048,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-home-dir"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-utils-absolute-path",
+  "dirs",
+@@ -5057,7 +5058,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-image"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-utils-cache",
+@@ -5071,7 +5072,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-json-to-toml"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "serde_json",
+@@ -5080,7 +5081,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-oss"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-core",
+  "codex-lmstudio",
+@@ -5090,7 +5091,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-output-truncation"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-utils-string",
+@@ -5100,7 +5101,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-path"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-utils-absolute-path",
+  "dunce",
+@@ -5111,7 +5112,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-path-uri"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "base64 0.22.1",
+  "codex-utils-absolute-path",
+@@ -5127,7 +5128,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-plugins"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-exec-server",
+  "codex-exec-server-protocol",
+@@ -5141,7 +5142,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-process"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "tokio",
+@@ -5149,7 +5150,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-pty"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-utils-cargo-bin",
+@@ -5168,7 +5169,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-readiness"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "assert_matches",
+  "thiserror 2.0.18",
+@@ -5178,7 +5179,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-redacted-string"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "schemars 0.8.22",
+  "serde",
+@@ -5186,14 +5187,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-rustls-provider"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "rustls",
+ ]
+ 
+ [[package]]
+ name = "codex-utils-sandbox-summary"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-protocol",
+  "codex-utils-absolute-path",
+@@ -5203,7 +5204,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-sleep-inhibitor"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "core-foundation 0.9.4",
+  "libc",
+@@ -5213,14 +5214,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-stream-parser"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+ ]
+ 
+ [[package]]
+ name = "codex-utils-string"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "regex-lite",
+@@ -5230,14 +5231,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-utils-template"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+ ]
+ 
+ [[package]]
+ name = "codex-v8-poc"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "pretty_assertions",
+  "v8",
+@@ -5245,7 +5246,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-voice-host"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-install-context",
+@@ -5272,7 +5273,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-web-search-extension"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-api",
+  "codex-core",
+@@ -5294,7 +5295,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-websocket-auth"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -5313,7 +5314,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-websocket-client"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-http-client",
+  "codex-utils-rustls-provider",
+@@ -5329,7 +5330,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-windows-sandbox"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "base64 0.22.1",
+@@ -5359,7 +5360,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-windows-sandbox-service"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-cloud-config",
+@@ -5376,14 +5377,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-windows-sandbox-test-support"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "dirs",
+ ]
+ 
+ [[package]]
+ name = "codex-workload-identity"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "codex-http-client",
+  "pretty_assertions",
+@@ -5398,7 +5399,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "codex-worktree"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "codex-git-utils",
+@@ -5639,7 +5640,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "core_test_support"
+-version = "0.0.0"
++version = "0.162.0"
+ dependencies = [
+  "anyhow",
+  "assert_cmd",
+@@ -6500,7 +6501,7 @@ dependencies = [
+  "libc",
+  "option-ext",
+  "redox_users 0.5.2",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -6857,7 +6858,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+ dependencies = [
+  "libc",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -6954,6 +6955,17 @@ dependencies = [
+  "regex-syntax",
+ ]
+ 
++[[package]]
++name = "fancy-regex"
++version = "0.19.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d301f5bf187b3c295fce6468d3875037a0bccc5f6b151c63cac2f85babf21912"
++dependencies = [
++ "bit-set 0.8.0",
++ "regex-automata",
++ "regex-syntax",
++]
++
+ [[package]]
+ name = "fast-srgb8"
+ version = "1.0.0"
+@@ -7507,7 +7519,7 @@ dependencies = [
+  "gobject-sys",
+  "libc",
+  "system-deps",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -9620,7 +9632,7 @@ checksum = "3640c1c38b8e4e43584d8df18be5fc6b0aa314ce6ebf51b53313d4306cca8e46"
+ dependencies = [
+  "hermit-abi",
+  "libc",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -9686,7 +9698,7 @@ dependencies = [
+  "portable-atomic",
+  "portable-atomic-util",
+  "serde_core",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -10595,7 +10607,7 @@ version = "0.50.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
+ dependencies = [
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -11312,7 +11324,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7d8fae84b431384b68627d0f9b3b1245fcf9f46f6c0e3dc902e9dce64edd1967"
+ dependencies = [
+  "libc",
+- "windows-sys 0.48.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -12245,7 +12257,7 @@ dependencies = [
+  "libc",
+  "log",
+  "socket2 0.6.3",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -12912,9 +12924,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "regex"
+-version = "1.12.3"
++version = "1.13.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e10754a14b9137dd7b1e3e5b0493cc9171fdd105e0ab477f51b72e7f3ac0e276"
++checksum = "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d"
+ dependencies = [
+  "aho-corasick",
+  "memchr",
+@@ -12924,9 +12936,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "regex-automata"
+-version = "0.4.13"
++version = "0.4.18"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5276caf25ac86c8d810222b3dbb938e512c55c6831a10f3e6ed1c93b84041f1c"
++checksum = "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2"
+ dependencies = [
+  "aho-corasick",
+  "memchr",
+@@ -12941,9 +12953,9 @@ checksum = "8d942b98df5e658f56f20d592c7f868833fe38115e65c33003d8cd224b0155da"
+ 
+ [[package]]
+ name = "regex-syntax"
+-version = "0.8.8"
++version = "0.8.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7a2d987857b319362043e95f5353c0535c1f58eec5336fdfcf626430af7def58"
++checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
+ 
+ [[package]]
+ name = "rend"
+@@ -13548,7 +13560,7 @@ dependencies = [
+  "errno",
+  "libc",
+  "linux-raw-sys 0.12.1",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -13607,7 +13619,7 @@ dependencies = [
+  "security-framework 3.5.1",
+  "security-framework-sys",
+  "webpki-root-certs",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -14431,7 +14443,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3a766e1110788c36f4fa1c2b71b387a7815aa65f88ce0229841826633d93723e"
+ dependencies = [
+  "libc",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -15261,7 +15273,7 @@ dependencies = [
+  "getrandom 0.4.2",
+  "once_cell",
+  "rustix 1.1.4",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -15317,7 +15329,7 @@ dependencies = [
+  "parking_lot",
+  "rustix 1.1.4",
+  "signal-hook",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -15567,6 +15579,20 @@ dependencies = [
+  "zune-jpeg 0.4.21",
+ ]
+ 
++[[package]]
++name = "tiktoken-rs"
++version = "0.12.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "2aeff724640cfe13037336ddf35befdffd2909cbdb65cf041cc8a4cf8c584cfa"
++dependencies = [
++ "anyhow",
++ "base64 0.22.1",
++ "bstr",
++ "fancy-regex 0.19.2",
++ "regex",
++ "rustc-hash",
++]
++
+ [[package]]
+ name = "tikv-jemalloc-sys"
+ version = "0.7.1+5.3.1-0-g81034ce1f1373e37dc865038e1bc8eeecf559ce8"
+@@ -17068,7 +17094,7 @@ version = "0.1.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
+ dependencies = [
+- "windows-sys 0.48.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+diff --git a/codex-rs/app-server-protocol/src/protocol/common.rs b/codex-rs/app-server-protocol/src/protocol/common.rs
+index 3e73b44ff..43469ae01 100644
+--- a/codex-rs/app-server-protocol/src/protocol/common.rs
++++ b/codex-rs/app-server-protocol/src/protocol/common.rs
+@@ -1978,6 +1978,7 @@ server_notification_definitions! {
+     RawResponseItemCompleted => "rawResponseItem/completed" (v2::RawResponseItemCompletedNotification),
+     /// This event is internal-only. Used by clients that need exact upstream usage.
+     RawResponseCompleted => "rawResponse/completed" (v2::RawResponseCompletedNotification),
++    ModelStreamMetrics => "model/streamMetrics" (v2::ModelStreamMetricsNotification),
+     AgentMessageDelta => "item/agentMessage/delta" (v2::AgentMessageDeltaNotification),
+     /// EXPERIMENTAL - proposed plan streaming deltas for plan items.
+     PlanDelta => "item/plan/delta" (v2::PlanDeltaNotification),
+diff --git a/codex-rs/app-server-protocol/src/protocol/v2/thread.rs b/codex-rs/app-server-protocol/src/protocol/v2/thread.rs
+index c7f22e293..dca381ace 100644
+--- a/codex-rs/app-server-protocol/src/protocol/v2/thread.rs
++++ b/codex-rs/app-server-protocol/src/protocol/v2/thread.rs
+@@ -1910,6 +1910,16 @@ pub struct RawResponseCompletedNotification {
+     pub usage_metadata: Option<ResponseUsageMetadata>,
+ }
+ 
++/// Transient local status-line telemetry, scoped to one model request.
++#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema, TS)]
++#[serde(rename_all = "camelCase")]
++#[ts(export_to = "v2/")]
++pub struct ModelStreamMetricsNotification {
++    pub thread_id: String,
++    pub turn_id: String,
++    pub metrics: codex_protocol::protocol::ModelStreamMetrics,
++}
++
+ /// Usage metadata reported for one upstream response.
+ #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, JsonSchema, TS)]
+ #[serde(rename_all = "camelCase")]
+diff --git a/codex-rs/app-server/src/bespoke_event_handling.rs b/codex-rs/app-server/src/bespoke_event_handling.rs
+index f63285740..91e2041ee 100644
+--- a/codex-rs/app-server/src/bespoke_event_handling.rs
++++ b/codex-rs/app-server/src/bespoke_event_handling.rs
+@@ -1176,6 +1176,17 @@ pub(crate) async fn apply_bespoke_event_handling(
+             }
+             outgoing.send_server_notification(notification).await;
+         }
++        EventMsg::ModelStreamMetrics(metrics) => {
++            outgoing
++                .send_server_notification(ServerNotification::ModelStreamMetrics(
++                    codex_app_server_protocol::ModelStreamMetricsNotification {
++                        thread_id: conversation_id.to_string(),
++                        turn_id: event_turn_id,
++                        metrics,
++                    },
++                ))
++                .await;
++        }
+         EventMsg::RawResponseCompleted(raw_response_completed_event) => {
+             let notification = RawResponseCompletedNotification {
+                 thread_id: conversation_id.to_string(),
+diff --git a/codex-rs/app-server/src/notification_media.rs b/codex-rs/app-server/src/notification_media.rs
+index 4223ea796..524aa41fd 100644
+--- a/codex-rs/app-server/src/notification_media.rs
++++ b/codex-rs/app-server/src/notification_media.rs
+@@ -85,6 +85,7 @@ pub(crate) fn without_notification_media(notification: ServerNotification) -> Se
+         | ServerNotification::ItemGuardianApprovalReviewCompleted(_)
+         | ServerNotification::StrictReviewRequired(_)
+         | ServerNotification::RawResponseCompleted(_)
++        | ServerNotification::ModelStreamMetrics(_)
+         | ServerNotification::AgentMessageDelta(_)
+         | ServerNotification::PlanDelta(_)
+         | ServerNotification::CommandExecOutputDelta(_)
+diff --git a/codex-rs/codex-api/src/sse/responses.rs b/codex-rs/codex-api/src/sse/responses.rs
+index 78885f43d..e677688e3 100644
+--- a/codex-rs/codex-api/src/sse/responses.rs
++++ b/codex-rs/codex-api/src/sse/responses.rs
+@@ -363,7 +363,7 @@ pub fn process_responses_event(
+                 return Ok(Some(ResponseEvent::OutputTextDelta(delta)));
+             }
+         }
+-        "response.custom_tool_call_input.delta" => {
++        "response.custom_tool_call_input.delta" | "response.function_call_arguments.delta" => {
+             if let (Some(delta), Some(item_id)) =
+                 (event.delta, event.item_id.clone().or(event.call_id.clone()))
+             {
+@@ -481,7 +481,6 @@ pub fn process_responses_event(
+         | "response.content_part.added"
+         | "response.content_part.done"
+         | "response.custom_tool_call_input.done"
+-        | "response.function_call_arguments.delta"
+         | "response.function_call_arguments.done"
+         | "response.in_progress"
+         | "response.metadata"
+@@ -990,7 +989,12 @@ mod tests {
+                 delta,
+             } if item_id == "ctc_1" && call_id == "call_1" && delta == "*** Begin"
+         );
+-        assert_matches!(&events[1], ResponseEvent::Completed { .. });
++        assert_matches!(
++            &events[1],
++            ResponseEvent::ToolCallInputDelta { item_id, call_id: None, delta }
++                if item_id == "fc_1" && delta == "{\"input\":\""
++        );
++        assert_matches!(&events[2], ResponseEvent::Completed { .. });
+     }
+ 
+     #[tokio::test]
+diff --git a/codex-rs/core/Cargo.toml b/codex-rs/core/Cargo.toml
+index cfd723688..4e7d2a512 100644
+--- a/codex-rs/core/Cargo.toml
++++ b/codex-rs/core/Cargo.toml
+@@ -12,6 +12,7 @@ path = "src/lib.rs"
+ workspace = true
+ 
+ [dependencies]
++tiktoken-rs = "=0.12.1"
+ codex-utils-process = { workspace = true }
+ anyhow = { workspace = true }
+ arc-swap = { workspace = true }
+diff --git a/codex-rs/core/src/lib.rs b/codex-rs/core/src/lib.rs
+index a2b44e3f1..a397c91ca 100644
+--- a/codex-rs/core/src/lib.rs
++++ b/codex-rs/core/src/lib.rs
+@@ -1,5 +1,7 @@
+ //! Root of the `codex-core` library.
+ 
++// Leave room for nested async tool-handler layout queries in this release.
++#![recursion_limit = "256"]
+ // Prevent accidental direct writes to stdout/stderr in library code. All
+ // user-visible output must go through the appropriate abstraction (e.g.,
+ // the TUI or the tracing stack).
+@@ -19,6 +21,7 @@ pub use responses_headers::CodexResponsesHeaders;
+ mod responses_metadata;
+ mod responses_retry;
+ pub(crate) mod session;
++mod stream_throughput;
+ pub use codex_protocol::turn_input::NotSubmittedReason;
+ pub use codex_protocol::turn_input::RecoverTurnRequest;
+ pub use codex_protocol::turn_input::StartIfIdleSubmission;
+diff --git a/codex-rs/core/src/session/turn.rs b/codex-rs/core/src/session/turn.rs
+index 64e8786a1..ea9776104 100644
+--- a/codex-rs/core/src/session/turn.rs
++++ b/codex-rs/core/src/session/turn.rs
+@@ -2154,6 +2154,7 @@ pub(super) fn realtime_text_for_event(msg: &EventMsg) -> Option<RealtimeEventTex
+         | EventMsg::ExitedReviewMode(_)
+         | EventMsg::RawResponseItem(_)
+         | EventMsg::RawResponseCompleted(_)
++        | EventMsg::ModelStreamMetrics(_)
+         | EventMsg::ItemStarted(_)
+         | EventMsg::HookStarted(_)
+         | EventMsg::HookCompleted(_)
+@@ -2559,6 +2560,16 @@ async fn try_run_sampling_request(
+     let effort = sess
+         .reasoning_effort_for_request(&step_context.settings, super::RequestEffortUsage::Sampling)
+         .await;
++    let mut stream_throughput = std::env::var_os("CXSTATUSLINE_COMMAND")
++        .map(|_| crate::stream_throughput::DecodeThroughput::new());
++    let mut throughput_completed = false;
++    if let Some(tracker) = stream_throughput.as_mut() {
++        sess.send_event(
++            &turn_context,
++            EventMsg::ModelStreamMetrics(tracker.finish("waiting", None)),
++        )
++        .await;
++    }
+     let mut stream = client_session
+         .stream(
+             prompt,
+@@ -2662,6 +2673,42 @@ async fn try_run_sampling_request(
+             }
+         };
+ 
++        if let Some(tracker) = stream_throughput.as_mut() {
++            let received_at = std::time::Instant::now();
++            let metrics = match &event {
++                ResponseEvent::OutputTextDelta(delta) => tracker.push("text", delta, received_at),
++                ResponseEvent::ToolCallInputDelta { delta, .. } => {
++                    tracker.push("tool", delta, received_at)
++                }
++                ResponseEvent::ReasoningContentDelta { delta, .. } => {
++                    tracker.push("reasoning", delta, received_at)
++                }
++                ResponseEvent::ReasoningSummaryDelta { delta, .. } => {
++                    tracker.push("summary", delta, received_at)
++                }
++                ResponseEvent::OutputItemAdded(_) | ResponseEvent::OutputItemDone(_) => {
++                    tracker.end_item();
++                    Some(tracker.snapshot("waiting"))
++                }
++                ResponseEvent::Completed { token_usage, .. } => {
++                    throughput_completed = true;
++                    Some(
++                        tracker.finish(
++                            "complete",
++                            token_usage
++                                .as_ref()
++                                .map(|usage| (usage.output_tokens, usage.reasoning_output_tokens)),
++                        ),
++                    )
++                }
++                _ => None,
++            };
++            if let Some(metrics) = metrics {
++                sess.send_event(&turn_context, EventMsg::ModelStreamMetrics(metrics))
++                    .await;
++            }
++        }
++
+         sess.services
+             .session_telemetry
+             .record_responses(&handle_responses, &event);
+@@ -3145,6 +3192,14 @@ async fn try_run_sampling_request(
+     drop(sampling_span);
+     drop(sampling_timing_guard);
+ 
++    if !throughput_completed && let Some(tracker) = stream_throughput.as_mut() {
++        sess.send_event(
++            &turn_context,
++            EventMsg::ModelStreamMetrics(tracker.finish("interrupted", None)),
++        )
++        .await;
++    }
++
+     flush_assistant_text_segments_all(
+         &sess,
+         &turn_context,
+diff --git a/codex-rs/core/src/stream_throughput.rs b/codex-rs/core/src/stream_throughput.rs
+new file mode 100644
+index 000000000..7c886eca1
+--- /dev/null
++++ b/codex-rs/core/src/stream_throughput.rs
+@@ -0,0 +1,376 @@
++//! Client-observed output throughput, isolated to one upstream sampling request.
++//!
++//! Text, tool-input and raw reasoning deltas contribute to observed decode.
++//! Summaries have a separate clock and never stand in for hidden reasoning.
++//! Each item/channel starts a new interval, excluding TTFT, tools and idle time.
++//! The first chunk is a baseline, not tokens generated during a zero-length interval.
++//! o200k BPE is a live estimate; at completion, non-reasoning server usage calibrates
++//! that estimate. Transport buffering and tokenizer differences remain observable
++//! limitations, so the UI always labels the rate as approximate.
++
++use codex_protocol::protocol::ModelStreamMetrics;
++use std::collections::VecDeque;
++use std::sync::LazyLock;
++use std::time::Duration;
++use std::time::Instant;
++
++const INTERVAL: Duration = Duration::from_millis(100);
++const WINDOW: Duration = Duration::from_secs(1);
++static TOKENIZER: LazyLock<Option<tiktoken_rs::CoreBPE>> =
++    LazyLock::new(|| tiktoken_rs::o200k_base().ok());
++
++#[derive(Default)]
++pub(crate) struct StreamThroughput {
++    text: String,
++    first: Option<Instant>,
++    last: Option<Instant>,
++    first_tokens: usize,
++    samples: VecDeque<(Instant, usize)>,
++    emitted_at: Option<Instant>,
++    total_tokens: usize,
++    timed_tokens: usize,
++    duration: Duration,
++}
++
++impl StreamThroughput {
++    pub(crate) fn new() -> Self {
++        // Load before the request, so tokenizer initialization is never timed.
++        LazyLock::force(&TOKENIZER);
++        Self::default()
++    }
++
++    fn count(text: &str) -> usize {
++        TOKENIZER
++            .as_ref()
++            .map_or(0, |bpe| bpe.encode_ordinary(text).len())
++    }
++
++    pub(crate) fn push(&mut self, delta: &str, now: Instant) -> Option<ModelStreamMetrics> {
++        if delta.is_empty() {
++            return None;
++        }
++        self.text.push_str(delta);
++        self.last = Some(now);
++        if self.first.is_none() {
++            self.first = Some(now);
++            self.first_tokens = Self::count(&self.text);
++            self.samples.push_back((now, self.first_tokens));
++        }
++        if self
++            .emitted_at
++            .is_some_and(|last| now.duration_since(last) < INTERVAL)
++        {
++            return None;
++        }
++        self.emitted_at = Some(now);
++        let tokens = Self::count(&self.text);
++        self.samples.push_back((now, tokens));
++        // Retain the sample just before the cutoff, avoiding a shortened window.
++        while self.samples.len() > 2 && now.duration_since(self.samples[1].0) >= WINDOW {
++            self.samples.pop_front();
++        }
++        let (start, baseline) = *self.samples.front()?;
++        let elapsed = now.duration_since(start);
++        let mut metrics = self.snapshot("streaming");
++        metrics.output_tps = rate(tokens.saturating_sub(baseline), elapsed);
++        Some(metrics)
++    }
++
++    pub(crate) fn end_item(&mut self) {
++        let tokens = Self::count(&self.text);
++        self.total_tokens += tokens;
++        if let (Some(first), Some(last)) = (self.first, self.last) {
++            self.timed_tokens += tokens.saturating_sub(self.first_tokens);
++            self.duration += last.duration_since(first);
++        }
++        self.text.clear();
++        self.first = None;
++        self.last = None;
++        self.samples.clear();
++        self.emitted_at = None;
++    }
++
++    pub(crate) fn snapshot(&self, phase: &str) -> ModelStreamMetrics {
++        let current_tokens = Self::count(&self.text);
++        let current_duration = self
++            .first
++            .zip(self.last)
++            .map_or(Duration::ZERO, |(first, last)| last.duration_since(first));
++        ModelStreamMetrics {
++            phase: phase.to_owned(),
++            stream_kind: "text".to_owned(),
++            output_tps: None,
++            average_tps: rate(
++                self.timed_tokens + current_tokens.saturating_sub(self.first_tokens),
++                self.duration + current_duration,
++            ),
++            estimated: true,
++            window_ms: WINDOW.as_millis() as u64,
++            sample_interval_ms: INTERVAL.as_millis() as u64,
++            generation_ms: (self.duration + current_duration).as_millis() as u64,
++            streamed_tokens: (self.total_tokens + current_tokens) as u64,
++            reported_output_tokens: None,
++            reported_reasoning_tokens: None,
++        }
++    }
++
++    pub(crate) fn finish(
++        &mut self,
++        phase: &str,
++        reported: Option<(i64, i64)>,
++    ) -> ModelStreamMetrics {
++        self.end_item();
++        let mut metrics = self.snapshot(phase);
++        if let Some((output, reasoning)) = reported {
++            metrics.reported_output_tokens = Some(output);
++            metrics.reported_reasoning_tokens = Some(reasoning);
++            if self.total_tokens > 0 && output >= reasoning && reasoning >= 0 {
++                // Match the numerator to the measured visible intervals. Never
++                // divide hidden reasoning tokens by visible-only output time.
++                let scale = (output - reasoning) as f64 / self.total_tokens as f64;
++                metrics.average_tps = metrics.average_tps.map(|rate| rate * scale);
++            }
++        }
++        metrics.output_tps = metrics.average_tps;
++        metrics
++    }
++}
++
++/// A single observed decode clock across text, tools and raw reasoning.
++/// Summaries are timed separately: they may be buffered or produced by another
++/// process and cannot be calibrated with hidden reasoning usage.
++pub(crate) struct DecodeThroughput {
++    decode: StreamThroughput,
++    summary: StreamThroughput,
++    active: Option<String>,
++    saw_raw_reasoning: bool,
++}
++
++impl DecodeThroughput {
++    pub(crate) fn new() -> Self {
++        Self {
++            decode: StreamThroughput::new(),
++            summary: StreamThroughput::new(),
++            active: None,
++            saw_raw_reasoning: false,
++        }
++    }
++
++    pub(crate) fn push(
++        &mut self,
++        kind: &str,
++        delta: &str,
++        now: Instant,
++    ) -> Option<ModelStreamMetrics> {
++        if delta.is_empty() {
++            return None;
++        }
++        if self.active.as_deref() != Some(kind) {
++            self.end_item();
++            self.active = Some(kind.to_owned());
++        }
++        self.saw_raw_reasoning |= kind == "reasoning";
++        let tracker = if kind == "summary" {
++            &mut self.summary
++        } else {
++            &mut self.decode
++        };
++        tracker.push(delta, now).map(|mut metrics| {
++            metrics.stream_kind = kind.to_owned();
++            metrics
++        })
++    }
++
++    pub(crate) fn end_item(&mut self) {
++        self.decode.end_item();
++        self.summary.end_item();
++        self.active = None;
++    }
++
++    pub(crate) fn snapshot(&self, phase: &str) -> ModelStreamMetrics {
++        let mut metrics = self.decode.snapshot(phase);
++        metrics.stream_kind = "mixed".to_owned();
++        metrics
++    }
++
++    pub(crate) fn finish(
++        &mut self,
++        phase: &str,
++        reported: Option<(i64, i64)>,
++    ) -> ModelStreamMetrics {
++        // Raw streams from third-party providers can be partial. Do not inflate
++        // their speed using a total that may include unobserved reasoning.
++        let calibrated = if self.saw_raw_reasoning {
++            None
++        } else {
++            reported
++        };
++        let mut metrics = self.decode.finish(phase, calibrated);
++        metrics.stream_kind = "mixed".to_owned();
++        if metrics.output_tps.is_none() {
++            let mut summary = self.summary.finish(phase, None);
++            if summary.output_tps.is_some() {
++                summary.stream_kind = "summary".to_owned();
++                metrics = summary;
++            }
++        }
++        if let Some((output, reasoning)) = reported {
++            metrics.reported_output_tokens = Some(output);
++            metrics.reported_reasoning_tokens = Some(reasoning);
++        }
++        metrics
++    }
++}
++
++fn rate(tokens: usize, duration: Duration) -> Option<f64> {
++    (duration >= INTERVAL).then(|| tokens as f64 / duration.as_secs_f64())
++}
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++
++    #[test]
++    fn waiting_tail_and_between_items_do_not_change_speed() {
++        let now = Instant::now();
++        let mut a = StreamThroughput::new();
++        let mut b = StreamThroughput::new();
++        for tracker in [&mut a, &mut b] {
++            tracker.push("hello", now + Duration::from_secs(30));
++            tracker.push(" world", now + Duration::from_millis(30500));
++            tracker.end_item();
++        }
++        a.push("good", now + Duration::from_secs(31));
++        a.push(" bye", now + Duration::from_millis(31500));
++        b.push("good", now + Duration::from_secs(100));
++        b.push(" bye", now + Duration::from_millis(100500));
++        let a = a.finish("complete", Some((40, 20)));
++        let b = b.finish("complete", Some((40, 20)));
++        assert_eq!(a.generation_ms, 1000);
++        assert_eq!(a.output_tps, b.output_tps);
++    }
++
++    #[test]
++    fn first_chunk_and_single_buffered_chunk_are_not_infinite_speed() {
++        let mut tracker = StreamThroughput::new();
++        let now = Instant::now();
++        assert_eq!(
++            tracker
++                .push("many tokens in one chunk", now)
++                .unwrap()
++                .output_tps,
++            None
++        );
++        assert_eq!(tracker.finish("complete", Some((99, 0))).output_tps, None);
++    }
++
++    #[test]
++    fn stream_count_is_independent_of_chunk_boundaries_and_reasoning_is_excluded() {
++        let now = Instant::now();
++        let text = "你好 hello world 我们测试 streaming tokens.";
++        let mut tracker = StreamThroughput::new();
++        for (i, ch) in text.chars().enumerate() {
++            tracker.push(&ch.to_string(), now + Duration::from_millis(i as u64 * 100));
++        }
++        let metrics = tracker.finish("complete", Some((110, 100)));
++        assert_eq!(
++            metrics.streamed_tokens as usize,
++            StreamThroughput::count(text)
++        );
++        assert!(metrics.output_tps.unwrap() < 10.0);
++    }
++
++    #[test]
++    fn new_request_has_no_previous_window_or_counters() {
++        let now = Instant::now();
++        let mut first = StreamThroughput::new();
++        first.push("hello", now);
++        first.push(" world", now + Duration::from_millis(500));
++        assert!(first.finish("interrupted", None).output_tps.is_some());
++        let mut second = StreamThroughput::new();
++        let metrics = second.push("new", now + Duration::from_secs(60)).unwrap();
++        assert_eq!(metrics.output_tps, None);
++        assert_eq!(metrics.generation_ms, 0);
++    }
++
++    #[test]
++    fn hundred_ms_sampling_and_one_second_window_match_known_throughput() {
++        let now = Instant::now();
++        let mut tracker = StreamThroughput::new();
++        tracker.push(" x", now);
++        assert!(tracker.push("", now + Duration::from_millis(50)).is_none());
++        for i in 1..=30 {
++            let sample = tracker
++                .push(" x", now + Duration::from_millis(i * 100))
++                .unwrap();
++            assert!((sample.output_tps.unwrap() - 10.0).abs() < 1e-6);
++        }
++        let finished = tracker.finish("complete", Some((310, 0)));
++        assert!((finished.output_tps.unwrap() - 100.0).abs() < 1e-6);
++        assert_eq!(finished.generation_ms, 3000);
++    }
++}
++
++#[cfg(test)]
++mod decode_tests {
++    use super::*;
++
++    #[test]
++    fn reasoning_tools_and_text_share_decode_but_exclude_phase_gaps() {
++        let mut tracker = DecodeThroughput::new();
++        let now = Instant::now();
++        for (kind, offset) in [("reasoning", 0), ("tool", 30), ("text", 60)] {
++            for i in 0..=10 {
++                let m = tracker
++                    .push(
++                        kind,
++                        " x",
++                        now + Duration::from_millis(offset * 1000 + i * 100),
++                    )
++                    .unwrap();
++                assert_eq!(m.stream_kind, kind);
++                if i > 0 {
++                    assert!((m.output_tps.unwrap() - 10.0).abs() < 1e-6);
++                }
++            }
++            tracker.end_item();
++        }
++        let done = tracker.finish("complete", Some((9999, 9000)));
++        assert_eq!(done.generation_ms, 3000);
++        assert!((done.output_tps.unwrap() - 10.0).abs() < 1e-6);
++        assert_eq!(done.streamed_tokens, 33);
++    }
++
++    #[test]
++    fn summary_does_not_enter_decode_or_hidden_usage_calibration() {
++        let now = Instant::now();
++        let mut tracker = DecodeThroughput::new();
++        for i in 0..=10 {
++            tracker.push("summary", " x", now + Duration::from_millis(i * 100));
++        }
++        tracker.end_item();
++        for i in 0..=10 {
++            tracker.push(
++                "text",
++                " x",
++                now + Duration::from_secs(30) + Duration::from_millis(i * 100),
++            );
++        }
++        let done = tracker.finish("complete", Some((1011, 1000)));
++        assert_eq!(done.generation_ms, 1000);
++        assert_eq!(done.streamed_tokens, 11);
++        assert!((done.output_tps.unwrap() - 10.0).abs() < 1e-6);
++        assert_eq!(done.stream_kind, "mixed");
++    }
++
++    #[test]
++    fn summary_only_keeps_its_own_rate_even_with_large_hidden_usage() {
++        let now = Instant::now();
++        let mut tracker = DecodeThroughput::new();
++        tracker.push("summary", " x", now);
++        tracker.push("summary", " x", now + Duration::from_millis(100));
++        let done = tracker.finish("complete", Some((5001, 5000)));
++        assert_eq!(done.stream_kind, "summary");
++        assert!((done.output_tps.unwrap() - 10.0).abs() < 1e-6);
++    }
++}
+diff --git a/codex-rs/protocol/src/protocol.rs b/codex-rs/protocol/src/protocol.rs
+index 841c794d4..072c85432 100644
+--- a/codex-rs/protocol/src/protocol.rs
++++ b/codex-rs/protocol/src/protocol.rs
+@@ -1437,6 +1437,9 @@ pub enum EventMsg {
+     /// Optional means unknown — UIs should not display when `None`.
+     TokenCount(TokenCountEvent),
+ 
++    /// Transient per-request output streaming throughput for the local status line.
++    ModelStreamMetrics(ModelStreamMetrics),
++
+     /// Agent text output message
+     AgentMessage(AgentMessageEvent),
+ 
+@@ -1952,6 +1955,23 @@ pub struct RawResponseCompletedEvent {
+     pub usage_metadata: Option<crate::ResponseUsageMetadata>,
+ }
+ 
++/// Client-observed throughput; rates are estimates, never hardware-side timings.
++#[derive(Debug, Clone, PartialEq, Deserialize, Serialize, TS, JsonSchema)]
++pub struct ModelStreamMetrics {
++    pub phase: String,
++    #[serde(default)]
++    pub stream_kind: String,
++    pub output_tps: Option<f64>,
++    pub average_tps: Option<f64>,
++    pub estimated: bool,
++    pub window_ms: u64,
++    pub sample_interval_ms: u64,
++    pub generation_ms: u64,
++    pub streamed_tokens: u64,
++    pub reported_output_tokens: Option<i64>,
++    pub reported_reasoning_tokens: Option<i64>,
++}
++
+ #[derive(Debug, Clone, Deserialize, Serialize, TS, JsonSchema)]
+ pub struct ItemStartedEvent {
+     pub thread_id: ThreadId,
+diff --git a/codex-rs/rollout-trace/src/protocol_event.rs b/codex-rs/rollout-trace/src/protocol_event.rs
+index b5e23153d..cf66e6803 100644
+--- a/codex-rs/rollout-trace/src/protocol_event.rs
++++ b/codex-rs/rollout-trace/src/protocol_event.rs
+@@ -412,6 +412,7 @@ pub(crate) fn tool_runtime_trace_event(event: &EventMsg) -> Option<ToolRuntimeTr
+         | EventMsg::ExitedReviewMode(_)
+         | EventMsg::RawResponseItem(_)
+         | EventMsg::RawResponseCompleted(_)
++        | EventMsg::ModelStreamMetrics(_)
+         | EventMsg::ItemStarted(_)
+         | EventMsg::ItemCompleted(_)
+         | EventMsg::HookStarted(_)
+@@ -491,6 +492,7 @@ pub(crate) fn wrapped_protocol_event_type(event: &EventMsg) -> Option<&'static s
+         | EventMsg::ExitedReviewMode(_)
+         | EventMsg::RawResponseItem(_)
+         | EventMsg::RawResponseCompleted(_)
++        | EventMsg::ModelStreamMetrics(_)
+         | EventMsg::ItemStarted(_)
+         | EventMsg::ItemCompleted(_)
+         | EventMsg::HookStarted(_)
+diff --git a/codex-rs/rollout/src/policy.rs b/codex-rs/rollout/src/policy.rs
+index a65076823..187709a5e 100644
+--- a/codex-rs/rollout/src/policy.rs
++++ b/codex-rs/rollout/src/policy.rs
+@@ -185,6 +185,7 @@ fn persisted_event_msg(
+         | EventMsg::AgentReasoningSectionBreak(_)
+         | EventMsg::RawResponseItem(_)
+         | EventMsg::RawResponseCompleted(_)
++        | EventMsg::ModelStreamMetrics(_)
+         | EventMsg::SessionConfigured(_)
+         | EventMsg::EnvironmentConnected(_)
+         | EventMsg::EnvironmentDisconnected(_)
+diff --git a/codex-rs/tui/src/app/app_server_event_targets.rs b/codex-rs/tui/src/app/app_server_event_targets.rs
+index 9e5b60bd8..e8b0be4f4 100644
+--- a/codex-rs/tui/src/app/app_server_event_targets.rs
++++ b/codex-rs/tui/src/app/app_server_event_targets.rs
+@@ -106,6 +106,9 @@ pub(super) fn server_notification_thread_target(
+         ServerNotification::RawResponseCompleted(notification) => {
+             Some(notification.thread_id.as_str())
+         }
++        ServerNotification::ModelStreamMetrics(notification) => {
++            Some(notification.thread_id.as_str())
++        }
+         ServerNotification::AgentMessageDelta(notification) => {
+             Some(notification.thread_id.as_str())
+         }
+diff --git a/codex-rs/tui/src/app/background_requests.rs b/codex-rs/tui/src/app/background_requests.rs
+index 69f2aeb45..abfa93657 100644
+--- a/codex-rs/tui/src/app/background_requests.rs
++++ b/codex-rs/tui/src/app/background_requests.rs
+@@ -131,7 +131,8 @@ impl App {
+                 RateLimitRefreshOrigin::Recovery
+                 | RateLimitRefreshOrigin::Periodic
+                 | RateLimitRefreshOrigin::ResetConsume { .. }
+-                | RateLimitRefreshOrigin::ResetPicker { .. } => {
++                | RateLimitRefreshOrigin::ResetPicker { .. }
++                | RateLimitRefreshOrigin::CxStatusLine => {
+                     tokio::time::timeout(RATE_LIMIT_RESET_REQUEST_TIMEOUT, request)
+                         .await
+                         .map_err(|_| "account/rateLimits/read timed out in TUI".to_string())
+@@ -1362,7 +1363,92 @@ mod tests {
+     use codex_config::types::AuthCredentialsStoreMode;
+     use codex_protocol::mcp::Tool;
+     use codex_utils_absolute_path::AbsolutePathBuf;
++    use codex_utils_absolute_path::test_support::PathExt;
+     use pretty_assertions::assert_eq;
++    use tempfile::tempdir;
++    use wiremock::Mock;
++    use wiremock::MockServer;
++    use wiremock::ResponseTemplate;
++    use wiremock::matchers::method;
++    use wiremock::matchers::path;
++
++    #[tokio::test(flavor = "current_thread")]
++    async fn cxstatusline_rate_limit_request_times_out() -> Result<()> {
++        let mut app = make_test_app().await;
++        let server = MockServer::start().await;
++        let home = tempdir()?;
++        app.config.codex_home = home.path().to_path_buf().abs();
++        app.config.chatgpt_base_url = server.uri();
++        app.cli_kv_overrides = vec![(
++            "chatgpt_base_url".to_string(),
++            toml::Value::String(server.uri()),
++        )];
++        app.config.cli_auth_credentials_store_mode = AuthCredentialsStoreMode::File;
++        app.config.sqlite = codex_state::SqliteConfig::new_for_testing(home.path().abs());
++        Mock::given(method("GET"))
++            .and(path("/api/codex/config/bundle"))
++            .respond_with(ResponseTemplate::new(/*status_code*/ 200).set_body_string("{}"))
++            .mount(&server)
++            .await;
++        write_chatgpt_auth(
++            home.path(),
++            ChatGptAuthFixture::new("chatgpt-token").account_id("account-123"),
++            AuthCredentialsStoreMode::File,
++        )
++        .expect("write ChatGPT authentication");
++        Mock::given(method("GET"))
++            .and(path("/api/codex/usage"))
++            .respond_with(ResponseTemplate::new(/*status_code*/ 200).set_delay(
++                RATE_LIMIT_RESET_REQUEST_TIMEOUT + std::time::Duration::from_secs(/*secs*/ 1),
++            ))
++            .expect(/*requests*/ 1)
++            .mount(&server)
++            .await;
++        let app_server = crate::start_app_server_for_picker(
++            &app.config,
++            &crate::AppServerTarget::Embedded,
++            app.cli_kv_overrides.clone(),
++            app.loader_overrides.clone(),
++            /*state_db*/ None,
++            app.environment_manager.clone(),
++        )
++        .await?;
++        let (app_event_tx, mut app_events) = tokio::sync::mpsc::unbounded_channel();
++        app.app_event_tx = AppEventSender::new(app_event_tx);
++
++        app.refresh_rate_limits(&app_server, RateLimitRefreshOrigin::CxStatusLine);
++        tokio::time::timeout(std::time::Duration::from_secs(/*secs*/ 5), async {
++            loop {
++                if server.received_requests().await.is_some_and(|requests| {
++                    requests
++                        .iter()
++                        .any(|request| request.url.path() == "/api/codex/usage")
++                }) {
++                    return;
++                }
++                tokio::time::sleep(std::time::Duration::from_millis(/*millis*/ 10)).await;
++            }
++        })
++        .await
++        .expect("cxstatusline request reaches the usage endpoint");
++
++        tokio::time::pause();
++        tokio::time::advance(RATE_LIMIT_RESET_REQUEST_TIMEOUT).await;
++        tokio::task::yield_now().await;
++
++        assert!(matches!(
++            app_events.try_recv(),
++            Ok(AppEvent::RateLimitsLoaded {
++                origin: RateLimitRefreshOrigin::CxStatusLine,
++                result: Err(ref error),
++                ..
++            }) if error == "account/rateLimits/read timed out in TUI"
++        ));
++
++        app_server.shutdown().await?;
++        server.verify().await;
++        Ok(())
++    }
+ 
+     #[tokio::test]
+     async fn fetch_thread_usage_uses_app_server_auth_after_persisted_account_changes() {
+diff --git a/codex-rs/tui/src/app/event_dispatch.rs b/codex-rs/tui/src/app/event_dispatch.rs
+index 2979e0a9a..b47e46e04 100644
+--- a/codex-rs/tui/src/app/event_dispatch.rs
++++ b/codex-rs/tui/src/app/event_dispatch.rs
+@@ -1866,6 +1866,13 @@ impl App {
+                                 }),
+                             );
+                         }
++                        RateLimitRefreshOrigin::CxStatusLine => {
++                            self.chat_widget.finish_cxstatusline_rate_limit_refresh();
++                            for snapshot in snapshots {
++                                self.chat_widget.on_rate_limit_snapshot(Some(snapshot));
++                            }
++                            tui.frame_requester().schedule_frame();
++                        }
+                     }
+                 }
+                 Err(err) => {
+@@ -1911,6 +1918,10 @@ impl App {
+                                 Err(err),
+                             );
+                         }
++                        RateLimitRefreshOrigin::CxStatusLine => {
++                            self.chat_widget.finish_cxstatusline_rate_limit_refresh();
++                            tui.frame_requester().schedule_frame();
++                        }
+                     }
+                 }
+                 }
+diff --git a/codex-rs/tui/src/app/tests/rate_limits.rs b/codex-rs/tui/src/app/tests/rate_limits.rs
+index 460b977b3..6df58809c 100644
+--- a/codex-rs/tui/src/app/tests/rate_limits.rs
++++ b/codex-rs/tui/src/app/tests/rate_limits.rs
+@@ -216,6 +216,7 @@ async fn stale_rate_limit_reads_preserve_newer_workspace_hard_stop_for_every_ori
+         "usage",
+         "reset-picker",
+         "reset-consume",
++        "cxstatusline",
+     ] {
+         let (mut app, mut app_event_rx, _op_rx) = make_test_app_with_channels().await;
+         set_chatgpt_auth(&mut app.chat_widget);
+@@ -270,6 +271,7 @@ async fn stale_rate_limit_reads_preserve_newer_workspace_hard_stop_for_every_ori
+             "reset-consume" => RateLimitRefreshOrigin::ResetConsume {
+                 request_id: app.chat_widget.show_rate_limit_reset_consuming_popup(),
+             },
++            "cxstatusline" => RateLimitRefreshOrigin::CxStatusLine,
+             _ => unreachable!("unknown refresh origin"),
+         };
+         let read_generation = app.rate_limit_hard_stop_generation;
+@@ -313,7 +315,7 @@ async fn stale_rate_limit_reads_preserve_newer_workspace_hard_stop_for_every_ori
+             "reset-consume" => {
+                 assert!(popup.contains("Usage reset. You have 0 usage limit resets left."));
+             }
+-            "startup" | "status" => {}
++            "startup" | "status" | "cxstatusline" => {}
+             _ => unreachable!("unknown refresh origin"),
+         }
+ 
+@@ -489,6 +491,97 @@ async fn failed_rate_limit_read_preserves_visible_backend_banner() -> Result<()>
+     Ok(())
+ }
+ 
++#[tokio::test]
++async fn cxstatusline_rate_limit_refresh_updates_snapshots_without_status_card() -> Result<()> {
++    let (mut app, mut app_event_rx, _op_rx) = make_test_app_with_channels().await;
++    set_chatgpt_auth(&mut app.chat_widget);
++    let mut tui = crate::tui::test_support::make_test_tui()?;
++    let mut app_server = Box::pin(crate::start_embedded_app_server_for_picker(
++        app.chat_widget.config_ref(),
++    ))
++    .await?;
++    let (request_id, hard_stop_generation) = app
++        .rate_limit_refresh_state
++        .start(
++            RateLimitRefreshOrigin::CxStatusLine,
++            &mut app.rate_limit_hard_stop_generation,
++        )
++        .expect("cxstatusline refresh starts");
++
++    app.handle_event(
++        &mut tui,
++        &mut app_server,
++        AppEvent::RateLimitsLoaded {
++            request_id,
++            origin: RateLimitRefreshOrigin::CxStatusLine,
++            hard_stop_generation,
++            result: Ok(account_rate_limits_response(rate_limit_snapshot(
++                /*used_percent*/ 89, /*rate_limit_reached_type*/ None,
++                /*spend_control_reached*/ None,
++            ))),
++        },
++    )
++    .await?;
++
++    assert!(
++        !std::iter::from_fn(|| app_event_rx.try_recv().ok())
++            .any(|event| matches!(event, AppEvent::InsertHistoryCell(_))),
++        "cxstatusline refresh must not create a status card"
++    );
++    let status = render_status_output(&mut app, &mut app_event_rx);
++    assert!(
++        status.contains("11% left"),
++        "expected cxstatusline refresh to update cached limits, got: {status}"
++    );
++
++    app_server.shutdown().await?;
++    Ok(())
++}
++
++#[tokio::test]
++async fn cxstatusline_rate_limit_refresh_failure_preserves_last_snapshot() -> Result<()> {
++    let (mut app, mut app_event_rx, _op_rx) = make_test_app_with_channels().await;
++    set_chatgpt_auth(&mut app.chat_widget);
++    app.chat_widget
++        .on_rate_limit_snapshot(Some(rate_limit_snapshot(
++            /*used_percent*/ 89, /*rate_limit_reached_type*/ None,
++            /*spend_control_reached*/ None,
++        )));
++    let mut tui = crate::tui::test_support::make_test_tui()?;
++    let mut app_server = Box::pin(crate::start_embedded_app_server_for_picker(
++        app.chat_widget.config_ref(),
++    ))
++    .await?;
++    let (request_id, hard_stop_generation) = app
++        .rate_limit_refresh_state
++        .start(
++            RateLimitRefreshOrigin::CxStatusLine,
++            &mut app.rate_limit_hard_stop_generation,
++        )
++        .expect("cxstatusline refresh starts");
++
++    app.handle_event(
++        &mut tui,
++        &mut app_server,
++        AppEvent::RateLimitsLoaded {
++            request_id,
++            origin: RateLimitRefreshOrigin::CxStatusLine,
++            hard_stop_generation,
++            result: Err("offline".to_string()),
++        },
++    )
++    .await?;
++
++    let status = render_status_output(&mut app, &mut app_event_rx);
++    assert!(
++        status.contains("11% left"),
++        "expected failed cxstatusline refresh to preserve cached limits, got: {status}"
++    );
++
++    app_server.shutdown().await?;
++    Ok(())
++}
++
+ #[tokio::test]
+ async fn backend_banner_reads_ignore_older_completions() -> Result<()> {
+     let (mut app, _events, _ops) = make_test_app_with_channels().await;
+diff --git a/codex-rs/tui/src/app_event.rs b/codex-rs/tui/src/app_event.rs
+index 4c6ede335..1f757dad8 100644
+--- a/codex-rs/tui/src/app_event.rs
++++ b/codex-rs/tui/src/app_event.rs
+@@ -214,6 +214,8 @@ pub(crate) struct PluginRemoteSectionError {
+ /// zero reset count so the disabled menu entry can become available without a
+ /// restart. A `ResetPicker` refreshes the rate limits and detailed reset-credit
+ /// rows before showing redemption choices.
++/// A `CxStatusLine` refresh updates the renderer payload without creating a
++/// status card or changing reset-credit state.
+ #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+ pub(crate) enum RateLimitRefreshOrigin {
+     /// Eagerly fetched after bootstrap for `/status` data and reset availability.
+@@ -231,6 +233,8 @@ pub(crate) enum RateLimitRefreshOrigin {
+     Recovery,
+     /// Background account usage read, scheduled more frequently near exhaustion.
+     Periodic,
++    /// Periodically refresh the `CXSTATUSLINE_COMMAND` renderer payload.
++    CxStatusLine,
+ }
+ 
+ #[derive(Debug, Clone, PartialEq, Eq)]
+diff --git a/codex-rs/tui/src/bottom_pane/chat_composer.rs b/codex-rs/tui/src/bottom_pane/chat_composer.rs
+index c919e31c9..a4176c1ef 100644
+--- a/codex-rs/tui/src/bottom_pane/chat_composer.rs
++++ b/codex-rs/tui/src/bottom_pane/chat_composer.rs
+@@ -17,6 +17,8 @@
+ //! Fullscreen limits the composer height; wheel browsing preserves the caret until editor input.
+ //! Transcript interactions borrow the hint footer through `ComposerRenderOptions`;
+ //! its resolved presentation drives height, painting, and the focused cursor together.
++//! External status rows reserve their own area above native footer hints and warnings;
++//! popup and transcript transitions keep those rows anchored below the input.
+ //!
+ //! The plain-text preset keeps command prefixes literal, including `!`, so Enter and Tab
+ //! submit ordinary text without enabling shell mode.
+@@ -330,6 +332,7 @@ use super::footer::inset_footer_hint_area;
+ use super::footer::max_left_width_for_right;
+ use super::footer::passive_footer_status_line;
+ use super::footer::render_context_right;
++use super::footer::render_cxstatusline_block;
+ use super::footer::render_footer_from_props;
+ use super::footer::render_footer_hint_items;
+ use super::footer::render_footer_line;
+@@ -747,6 +750,7 @@ impl ChatComposer {
+                 status_line_value: None,
+                 status_line_hyperlink_url: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 side_conversation_context_label: None,
+                 active_agent_label: None,
+                 external_editor_key: default_keymap
+@@ -4304,6 +4308,14 @@ impl ChatComposer {
+         true
+     }
+ 
++    pub(crate) fn set_cxstatusline_block(&mut self, block: Vec<Line<'static>>) -> bool {
++        if self.footer.cxstatusline_block == block {
++            return false;
++        }
++        self.footer.cxstatusline_block = block;
++        true
++    }
++
+     pub(crate) fn set_side_conversation_context_label(&mut self, label: Option<String>) -> bool {
+         if self.footer.side_conversation_context_label == label {
+             return false;
+@@ -4493,6 +4505,7 @@ impl ChatComposer {
+             remote_images: remote_images_rect,
+             textarea: textarea_rect,
+             popup: popup_rect,
++            cxstatusline,
+             footer: footer_rect,
+         } = self.layout_with_options(area, options);
+         self.render_status_surface(status, buf, options);
+@@ -4536,6 +4549,7 @@ impl ChatComposer {
+                 }
+             }
+         }
++        render_cxstatusline_block(cxstatusline, buf, &self.footer.cxstatusline_block);
+         let transcript_hint_area = inset_footer_hint_area(footer_rect);
+         let warning_notice = self.warning_notice_layout(transcript_hint_area, options);
+         let warning_area = warning_notice.as_ref().map(|(area, _)| *area);
+diff --git a/codex-rs/tui/src/bottom_pane/chat_composer/composer_layout.rs b/codex-rs/tui/src/bottom_pane/chat_composer/composer_layout.rs
+index 949edcf91..c5ae9676c 100644
+--- a/codex-rs/tui/src/bottom_pane/chat_composer/composer_layout.rs
++++ b/codex-rs/tui/src/bottom_pane/chat_composer/composer_layout.rs
+@@ -102,6 +102,12 @@ impl ChatComposer {
+             (composer, popup, popup)
+         };
+         footer_rect.y = footer_rect.y.saturating_add(status.height);
++        let cxstatusline = Rect {
++            height: (self.footer.cxstatusline_block.len() as u16).min(footer_rect.height),
++            ..footer_rect
++        };
++        footer_rect.y = footer_rect.y.saturating_add(cxstatusline.height);
++        footer_rect.height = footer_rect.height.saturating_sub(cxstatusline.height);
+         // Keep the draft visible when clipped.
+         let voice_rows = voice_rows * u16::from(composer_rect.height >= voice_rows + 3);
+         let mut textarea_rect = composer_rect.inset(Insets::tlbr(
+@@ -133,6 +139,7 @@ impl ChatComposer {
+             remote_images: remote_images_rect,
+             textarea: textarea_rect,
+             popup: popup_rect,
++            cxstatusline,
+             footer: footer_rect,
+         }
+     }
+diff --git a/codex-rs/tui/src/bottom_pane/chat_composer/footer_state.rs b/codex-rs/tui/src/bottom_pane/chat_composer/footer_state.rs
+index 5b8784a4f..5d8c1d9f5 100644
+--- a/codex-rs/tui/src/bottom_pane/chat_composer/footer_state.rs
++++ b/codex-rs/tui/src/bottom_pane/chat_composer/footer_state.rs
+@@ -1,6 +1,7 @@
+ //! Footer and status-row presentation state for the chat composer.
+ //! Owners schedule flash expiry redraws; replacing a draft clears its flash.
+ //! One resolved layout supplies the status, input, popup, and hint rectangles to each consumer.
++//! Renderer-owned status rows reserve their own rectangle above every native footer mode.
+ //! Slash-command and unified mention suggestions preserve passive footer content while keeping input.
+ //! Interactive transcript footers keep focus over nonempty composer hints. Their owner projects
+ //! actual pending chord hints; unrelated hints resume when the transcript interaction closes.
+@@ -45,6 +46,7 @@ pub(super) struct ComposerLayout {
+     pub(super) remote_images: Rect,
+     pub(super) textarea: Rect,
+     pub(super) popup: Rect,
++    pub(super) cxstatusline: Rect,
+     pub(super) footer: Rect,
+ }
+ 
+@@ -105,6 +107,7 @@ impl super::ChatComposer {
+             is_wsl,
+             status_line_value: self.footer.status_line_value.clone(),
+             status_line_enabled: self.footer.status_line_enabled,
++            cxstatusline_block: self.footer.cxstatusline_block.clone(),
+             key_hints: FooterKeyHints {
+                 agents: self
+                     .agents_navigation_available()
+@@ -275,16 +278,22 @@ impl super::ChatComposer {
+ 
+     pub(super) fn footer_hint_height(&self, width: u16, options: ComposerRenderOptions<'_>) -> u16 {
+         if self.show_warning_notice(options) || self.shortcuts_above_composer(options) {
+-            return 1;
++            return (self.footer.cxstatusline_block.len() as u16).saturating_add(1);
+         }
+         options
+             .footer
+             .map_or_else(
+                 || {
+                     self.custom_footer_height()
++                        .map(|height| {
++                            height.saturating_add(self.footer.cxstatusline_block.len() as u16)
++                        })
+                         .unwrap_or_else(|| footer_height(&self.hint_footer_props(options), width))
+                 },
+-                |footer| footer.text.height().try_into().unwrap_or(u16::MAX),
++                |footer| {
++                    let height: u16 = footer.text.height().try_into().unwrap_or(u16::MAX);
++                    height.saturating_add(self.footer.cxstatusline_block.len() as u16)
++                },
+             )
+             .max(u16::from(options.separate_status_line))
+     }
+@@ -359,6 +368,7 @@ pub(super) struct FooterState {
+     pub(super) status_line_value: Option<Line<'static>>,
+     pub(super) status_line_hyperlink_url: Option<String>,
+     pub(super) status_line_enabled: bool,
++    pub(super) cxstatusline_block: Vec<Line<'static>>,
+     pub(super) side_conversation_context_label: Option<String>,
+     pub(super) active_agent_label: Option<String>,
+     pub(super) external_editor_key: Option<ShortcutHint>,
+diff --git a/codex-rs/tui/src/bottom_pane/chat_composer/snapshots/codex_tui__bottom_pane__chat_composer__warning_notice__tests__cxstatusline_three_rows_with_warnings.snap b/codex-rs/tui/src/bottom_pane/chat_composer/snapshots/codex_tui__bottom_pane__chat_composer__warning_notice__tests__cxstatusline_three_rows_with_warnings.snap
+new file mode 100644
+index 000000000..64a85de8e
+--- /dev/null
++++ b/codex-rs/tui/src/bottom_pane/chat_composer/snapshots/codex_tui__bottom_pane__chat_composer__warning_notice__tests__cxstatusline_three_rows_with_warnings.snap
+@@ -0,0 +1,12 @@
++---
++source: tui/src/bottom_pane/chat_composer/warning_notice_tests.rs
++expression: "text(&render(&composer, 100, 3))"
++---
++
++› Ask Codex
++
++  MODEL · ~/project
++  CX row one
++  CX row two
++  CX row three
++  ? for shortcuts                                                         ⚠ 3 warnings · f2 to view
+diff --git a/codex-rs/tui/src/bottom_pane/chat_composer/warning_notice_tests.rs b/codex-rs/tui/src/bottom_pane/chat_composer/warning_notice_tests.rs
+index 2e11e1723..6fe9fab4a 100644
+--- a/codex-rs/tui/src/bottom_pane/chat_composer/warning_notice_tests.rs
++++ b/codex-rs/tui/src/bottom_pane/chat_composer/warning_notice_tests.rs
+@@ -163,3 +163,161 @@ fn warnings_yield_to_queue_controls_and_complete_navigation_hints() {
+         }
+     }
+ }
++
++#[test]
++fn cxstatusline_rows_survive_warning_and_menu_transitions() {
++    let mut composer = composer();
++    composer.set_cxstatusline_block(vec![
++        "CX row one".into(),
++        "CX row two".into(),
++        "CX row three".into(),
++    ]);
++    for draft in ["", "/", "", "hello", ""] {
++        composer.set_text_content(draft.into(), Vec::new(), Vec::new());
++        for count in [0, 3, 0] {
++            let screen = text(&render(&composer, /*width*/ 100, count));
++            for row in ["CX row one", "CX row two", "CX row three"] {
++                assert!(screen.contains(row), "missing {row}: {screen}");
++            }
++        }
++    }
++    insta::assert_snapshot!(
++        "cxstatusline_three_rows_with_warnings",
++        text(&render(&composer, /*width*/ 100, /*count*/ 3))
++    );
++}
++
++#[test]
++fn cxstatusline_rows_preserve_transcript_cursor_and_shortcut_help() {
++    let mut composer = composer();
++    composer.set_cxstatusline_block(vec![
++        "CX row one".into(),
++        "CX row two".into(),
++        "CX row three".into(),
++    ]);
++    let footer = TranscriptFooter {
++        text: "transcript input".into(),
++        cursor_column: Some(3),
++        is_interactive: true,
++    };
++    for mode in [FooterMode::ComposerEmpty, FooterMode::ShortcutOverlay] {
++        composer.footer.mode = mode;
++        for transcript in [None, Some(&footer)] {
++            let options = composer.resolve_render_options(ComposerRenderOptions {
++                footer: transcript,
++                ..Default::default()
++            });
++            let area = Rect::new(
++                0,
++                0,
++                100,
++                composer.desired_height_with_options(100, options),
++            );
++            let mut buffer = Buffer::empty(area);
++            composer.render_with_options(area, &mut buffer, None, options);
++            let screen = text(&buffer);
++            for row in ["CX row one", "CX row two", "CX row three"] {
++                assert!(screen.contains(row), "missing {row}: {screen}");
++            }
++            if transcript.is_some() {
++                let row = screen
++                    .lines()
++                    .position(|line| line.contains("transcript input"))
++                    .unwrap();
++                assert_eq!(
++                    composer.cursor_pos_with_options(area, options),
++                    Some((5, row as u16))
++                );
++            }
++        }
++    }
++}
++
++#[test]
++fn cxstatusline_rows_survive_real_slash_popup_input_and_resize() {
++    let mut composer = composer();
++    composer.set_collaboration_modes_enabled(true);
++    composer.set_cxstatusline_block(vec![
++        "CX row one".into(),
++        "CX row two".into(),
++        "CX row three".into(),
++    ]);
++    for ch in ['/', 'm'] {
++        composer.handle_key_event(KeyEvent::from(KeyCode::Char(ch)));
++    }
++    composer.handle_key_event(KeyEvent::new(KeyCode::Down, KeyModifiers::NONE));
++    assert!(matches!(composer.popups.active, ActivePopup::Command(_)));
++
++    for width in [80, 32] {
++        let options = composer.resolve_render_options(ComposerRenderOptions {
++            separate_status_line: true,
++            command_popup_placement: CommandPopupPlacement::AboveComposer,
++            ..Default::default()
++        });
++        let area = Rect::new(
++            0,
++            0,
++            width,
++            composer.desired_height_with_options(width, options),
++        );
++        let mut buffer = Buffer::empty(area);
++        composer.render_with_options(area, &mut buffer, None, options);
++        let layout = composer.layout_with_options(area, options);
++        assert!(
++            layout.popup.height > 0,
++            "slash popup should remain open at width {width}: {}",
++            text(&buffer)
++        );
++        assert_eq!(layout.cxstatusline.height, 3);
++        assert_eq!(layout.cxstatusline.bottom(), layout.footer.y);
++        for row in ["CX row one", "CX row two", "CX row three"] {
++            assert!(
++                text(&buffer).contains(row),
++                "missing {row} at width {width}"
++            );
++        }
++        let (x, y) = composer
++            .cursor_pos_with_options(area, options)
++            .expect("input cursor");
++        assert!(
++            x >= area.x && x < area.right(),
++            "cursor x outside width {width}: {x}"
++        );
++        assert!(
++            y >= area.y && y < area.bottom(),
++            "cursor y outside screen: {y}"
++        );
++    }
++
++    composer.handle_key_event(KeyEvent::new(KeyCode::Esc, KeyModifiers::NONE));
++    assert!(matches!(composer.popups.active, ActivePopup::None));
++    let options = composer.resolve_render_options(ComposerRenderOptions {
++        separate_status_line: true,
++        command_popup_placement: CommandPopupPlacement::AboveComposer,
++        ..Default::default()
++    });
++    let area = Rect::new(0, 0, 80, composer.desired_height_with_options(80, options));
++    let layout = composer.layout_with_options(area, options);
++    assert_eq!(layout.cxstatusline.height, 3);
++
++    for running in [true, false] {
++        composer.set_task_running(running);
++        let buffer = render(&composer, 80, 0);
++        for row in ["CX row one", "CX row two", "CX row three"] {
++            assert!(
++                text(&buffer).contains(row),
++                "missing {row}, running={running}"
++            );
++        }
++        let layout = composer.layout_with_options(buffer.area, options);
++        let (_, y) = composer
++            .cursor_pos_with_options(buffer.area, options)
++            .expect("input cursor");
++        assert!(
++            y < layout.cxstatusline.y,
++            "cursor overlaps footer, running={running}"
++        );
++    }
++    composer.handle_key_event(KeyEvent::from(KeyCode::Char('x')));
++    assert!(text(&render(&composer, 80, 0)).contains("/mx"));
++}
+diff --git a/codex-rs/tui/src/bottom_pane/footer.rs b/codex-rs/tui/src/bottom_pane/footer.rs
+index f0b809ce5..4033720c6 100644
+--- a/codex-rs/tui/src/bottom_pane/footer.rs
++++ b/codex-rs/tui/src/bottom_pane/footer.rs
+@@ -83,6 +83,9 @@ pub(crate) struct FooterProps {
+     pub(crate) quit_shortcut_key: KeyBinding,
+     pub(crate) status_line_value: Option<Line<'static>>,
+     pub(crate) status_line_enabled: bool,
++    /// Complete renderer-owned rows kept separate from Codex's contextual status line so native
++    /// instructions (Esc, quit, safety) remain visible below them.
++    pub(crate) cxstatusline_block: Vec<Line<'static>>,
+     pub(crate) key_hints: FooterKeyHints,
+     /// Active thread label shown when the footer is rendering contextual information instead of an
+     /// instructional hint.
+@@ -238,8 +241,9 @@ pub(crate) fn reset_mode_after_activity(current: FooterMode) -> FooterMode {
+ 
+ pub(crate) fn footer_height(props: &FooterProps, width: u16) -> u16 {
+     if props.mode == FooterMode::ShortcutOverlay {
+-        return shortcut_overlay::lines(props, width.saturating_sub(FOOTER_INDENT_COLS as u16)).len()
+-            as u16;
++        return props.cxstatusline_block.len() as u16
++            + shortcut_overlay::lines(props, width.saturating_sub(FOOTER_INDENT_COLS as u16)).len()
++                as u16;
+     }
+     let show_shortcuts_hint = match props.mode {
+         FooterMode::ComposerEmpty => true,
+@@ -257,14 +261,15 @@ pub(crate) fn footer_height(props: &FooterProps, width: u16) -> u16 {
+         | FooterMode::ShortcutOverlay
+         | FooterMode::EscHint => false,
+     };
+-    footer_from_props_lines(
+-        props,
+-        /*collaboration_mode_indicator*/ None,
+-        /*show_cycle_hint*/ false,
+-        show_shortcuts_hint,
+-        show_queue_hint,
+-    )
+-    .len() as u16
++    props.cxstatusline_block.len() as u16
++        + footer_from_props_lines(
++            props,
++            /*collaboration_mode_indicator*/ None,
++            /*show_cycle_hint*/ false,
++            show_shortcuts_hint,
++            show_queue_hint,
++        )
++        .len() as u16
+ }
+ 
+ /// Render a single precomputed footer line.
+@@ -277,6 +282,16 @@ pub(crate) fn render_footer_line(area: Rect, buf: &mut Buffer, line: Line<'stati
+     .render(area, buf);
+ }
+ 
++/// Render renderer-owned rows above the native footer content.
++pub(crate) fn render_cxstatusline_block(area: Rect, buf: &mut Buffer, block: &[Line<'static>]) {
++    Paragraph::new(prefix_lines(
++        block.to_vec(),
++        " ".repeat(FOOTER_INDENT_COLS).into(),
++        " ".repeat(FOOTER_INDENT_COLS).into(),
++    ))
++    .render(area, buf);
++}
++
+ /// Render footer content directly from `FooterProps`.
+ ///
+ /// This is intentionally not part of the width-based collapse/fallback logic.
+@@ -1019,12 +1034,49 @@ mod tests {
+         );
+     }
+ 
++    fn props_with_status_block(rows: usize, mode: FooterMode) -> FooterProps {
++        FooterProps {
++            mode,
++            esc_backtrack_hint: false,
++            is_task_running: false,
++            queue_submissions: false,
++            collaboration_modes_enabled: false,
++            is_wsl: false,
++            quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
++            status_line_value: None,
++            status_line_enabled: false,
++            cxstatusline_block: (0..rows)
++                .map(|row| Line::from(format!("status-{row}")))
++                .collect(),
++            key_hints: FooterKeyHints::default_bindings(),
++            active_agent_label: None,
++        }
++    }
++
+     fn snapshot_footer(name: &str, props: FooterProps) {
+         snapshot_footer_with_mode_indicator(
+             name, /*width*/ 80, &props, /*collaboration_mode_indicator*/ None,
+         );
+     }
+ 
++    #[test]
++    fn cxstatusline_block_adds_rows_without_hiding_instruction_footer() {
++        let props = props_with_status_block(3, FooterMode::EscHint);
++        assert_eq!(footer_height(&props, 80), 4);
++
++        let screen = render_footer_with_mode_indicator_and_context(
++            /*width*/ 80,
++            &props,
++            /*collaboration_mode_indicator*/ None,
++            context_window_line(/*percent*/ None, /*used_tokens*/ None),
++        );
++        let lines = screen.lines().map(str::trim).collect::<Vec<_>>();
++        assert_eq!(&lines[..3], ["status-0", "status-1", "status-2"]);
++        assert!(lines[3].contains("esc"));
++
++        snapshot_footer("cxstatusline_block_preserves_instruction_footer", props);
++    }
++
+     fn snapshot_footer_with_context(
+         name: &str,
+         props: FooterProps,
+@@ -1051,6 +1103,26 @@ mod tests {
+         terminal
+             .draw(|f| {
+                 let area = Rect::new(0, 0, f.area().width, height);
++                let cxstatusline_height = props.cxstatusline_block.len() as u16;
++                if cxstatusline_height > 0 {
++                    let cxstatusline_area = Rect::new(
++                        area.x,
++                        area.y,
++                        area.width,
++                        cxstatusline_height.min(area.height),
++                    );
++                    render_cxstatusline_block(
++                        cxstatusline_area,
++                        f.buffer_mut(),
++                        &props.cxstatusline_block,
++                    );
++                }
++                let area = Rect::new(
++                    area.x,
++                    area.y.saturating_add(cxstatusline_height),
++                    area.width,
++                    area.height.saturating_sub(cxstatusline_height),
++                );
+                 let show_cycle_hint = !props.is_task_running;
+                 let show_shortcuts_hint = match props.mode {
+                     FooterMode::ComposerEmpty => true,
+@@ -1299,6 +1371,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1316,6 +1389,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints {
+                     insert_newline: Some(key_hint::shift(KeyCode::Enter).into()),
+                     ..FooterKeyHints::default_bindings()
+@@ -1336,6 +1410,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1353,6 +1428,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1370,6 +1446,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1387,6 +1464,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1404,6 +1482,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1421,6 +1500,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1440,6 +1520,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1459,6 +1540,7 @@ mod tests {
+                 quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+                 status_line_value: None,
+                 status_line_enabled: false,
++                cxstatusline_block: Vec::new(),
+                 key_hints: FooterKeyHints::default_bindings(),
+                 active_agent_label: None,
+             },
+@@ -1474,6 +1556,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None,
+             status_line_enabled: false,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1502,6 +1585,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None,
+             status_line_enabled: false,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1523,6 +1607,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: Some(Line::from("Status line content".to_string())),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1539,6 +1624,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: Some(Line::from("Status line content".to_string())),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1555,6 +1641,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: Some(Line::from("Status line content".to_string())),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1571,6 +1658,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None, // command timed out / empty
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1601,6 +1689,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None,
+             status_line_enabled: false,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1623,6 +1712,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None,
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1648,6 +1738,7 @@ mod tests {
+                 "Status line content that should truncate before the mode indicator".to_string(),
+             )),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+@@ -1670,6 +1761,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: None,
+             status_line_enabled: false,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: Some("Robie [explorer]".to_string()),
+         };
+@@ -1686,6 +1778,7 @@ mod tests {
+             quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+             status_line_value: Some(Line::from("Status line content".to_string())),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: Some("Robie [explorer]".to_string()),
+         };
+@@ -1708,6 +1801,7 @@ mod tests {
+                     .to_string(),
+             )),
+             status_line_enabled: true,
++            cxstatusline_block: Vec::new(),
+             key_hints: FooterKeyHints::default_bindings(),
+             active_agent_label: None,
+         };
+diff --git a/codex-rs/tui/src/bottom_pane/mod.rs b/codex-rs/tui/src/bottom_pane/mod.rs
+index c0e390289..39b4a32d3 100644
+--- a/codex-rs/tui/src/bottom_pane/mod.rs
++++ b/codex-rs/tui/src/bottom_pane/mod.rs
+@@ -2395,6 +2395,12 @@ impl BottomPane {
+         }
+     }
+ 
++    pub(crate) fn set_cxstatusline_block(&mut self, block: Vec<Line<'static>>) {
++        if self.composer.set_cxstatusline_block(block) {
++            self.request_redraw();
++        }
++    }
++
+     /// Updates the contextual footer label and requests a redraw only when it changed.
+     ///
+     /// This keeps the footer plumbing cheap during thread transitions where `App` may recompute
+diff --git a/codex-rs/tui/src/bottom_pane/shortcut_overlay_tests.rs b/codex-rs/tui/src/bottom_pane/shortcut_overlay_tests.rs
+index fe6ebef45..b6f34517e 100644
+--- a/codex-rs/tui/src/bottom_pane/shortcut_overlay_tests.rs
++++ b/codex-rs/tui/src/bottom_pane/shortcut_overlay_tests.rs
+@@ -23,6 +23,7 @@ fn props() -> FooterProps {
+         quit_shortcut_key: key_hint::ctrl(KeyCode::Char('c')),
+         status_line_value: None,
+         status_line_enabled: false,
++        cxstatusline_block: Vec::new(),
+         key_hints: FooterKeyHints {
+             agents: Some(key_hint::plain(KeyCode::Left).into()),
+             ..FooterKeyHints::default_bindings()
+diff --git a/codex-rs/tui/src/bottom_pane/snapshots/codex_tui__bottom_pane__footer__tests__cxstatusline_block_preserves_instruction_footer.snap b/codex-rs/tui/src/bottom_pane/snapshots/codex_tui__bottom_pane__footer__tests__cxstatusline_block_preserves_instruction_footer.snap
+new file mode 100644
+index 000000000..abf66c5ec
+--- /dev/null
++++ b/codex-rs/tui/src/bottom_pane/snapshots/codex_tui__bottom_pane__footer__tests__cxstatusline_block_preserves_instruction_footer.snap
+@@ -0,0 +1,8 @@
++---
++source: tui/src/bottom_pane/footer.rs
++expression: terminal.backend()
++---
++"  status-0                                                                      "
++"  status-1                                                                      "
++"  status-2                                                                      "
++"  esc esc to edit previous message                                              "
+diff --git a/codex-rs/tui/src/chatwidget.rs b/codex-rs/tui/src/chatwidget.rs
+index 7dbb54bb8..26c16b982 100644
+--- a/codex-rs/tui/src/chatwidget.rs
++++ b/codex-rs/tui/src/chatwidget.rs
+@@ -767,6 +767,25 @@ pub(crate) struct ChatWidget {
+     status_line_workspace_headline_last_requested_at: Option<Instant>,
+     // Set after the backend reports the workspace-message feature gate is disabled.
+     status_line_workspace_messages_disabled: bool,
++    // cxstatusline: argv of the external renderer from `CXSTATUSLINE_COMMAND`, if set.
++    cxstatusline_command: Option<Vec<String>>,
++    // cxstatusline: last successfully rendered complete block, shared with the render task.
++    cxstatusline_output: Arc<std::sync::Mutex<Option<Vec<Line<'static>>>>>,
++    // cxstatusline: true while a render task is in flight.
++    cxstatusline_pending: Arc<AtomicBool>,
++    // cxstatusline: set by the render task when new output landed - draw it, do not re-spawn.
++    cxstatusline_fresh: Arc<AtomicBool>,
++    // cxstatusline: a refresh arrived while throttled or pending - re-run once possible.
++    cxstatusline_dirty: bool,
++    // cxstatusline: last time a render task was spawned (throttle).
++    cxstatusline_last_spawn_at: Option<Instant>,
++    // cxstatusline: true while the periodic account/rateLimits/read is in flight.
++    cxstatusline_rate_limit_pending: bool,
++    // cxstatusline: last periodic account/rateLimits/read request time (throttle).
++    cxstatusline_rate_limit_last_requested_at: Option<Instant>,
++    // cxstatusline: captured once so renderer speed calculations cover this TUI session.
++    cxstatusline_started_at: chrono::DateTime<chrono::Utc>,
++    cxstatusline_stream_metrics: Option<codex_protocol::protocol::ModelStreamMetrics>,
+     // Cached backend-estimated cost and bounded refresh state for the current thread.
+     thread_usage: thread_usage::ThreadUsageState,
+     // Current thread-goal status shown in the status line when plan mode is inactive.
+@@ -1180,6 +1199,7 @@ impl ChatWidget {
+             self.refresh_terminal_title();
+         }
+         self.refresh_status_line_if_workspace_headline_due();
++        self.cxstatusline_pre_draw_tick();
+         self.refresh_thread_usage_if_settlement_due();
+     }
+ 
+diff --git a/codex-rs/tui/src/chatwidget/constructor.rs b/codex-rs/tui/src/chatwidget/constructor.rs
+index dc5adf7b7..fed11dc61 100644
+--- a/codex-rs/tui/src/chatwidget/constructor.rs
++++ b/codex-rs/tui/src/chatwidget/constructor.rs
+@@ -279,6 +279,20 @@ impl ChatWidget {
+             next_status_line_workspace_headline_request_id: 0,
+             status_line_workspace_headline_last_requested_at: None,
+             status_line_workspace_messages_disabled: false,
++            cxstatusline_command: std::env::var("CXSTATUSLINE_COMMAND")
++                .ok()
++                .filter(|raw| !raw.trim().is_empty())
++                .and_then(|raw| shlex::split(&raw))
++                .filter(|argv| !argv.is_empty()),
++            cxstatusline_output: Arc::new(std::sync::Mutex::new(None)),
++            cxstatusline_pending: Arc::new(AtomicBool::new(false)),
++            cxstatusline_fresh: Arc::new(AtomicBool::new(false)),
++            cxstatusline_dirty: false,
++            cxstatusline_last_spawn_at: None,
++            cxstatusline_rate_limit_pending: false,
++            cxstatusline_rate_limit_last_requested_at: None,
++            cxstatusline_started_at: chrono::Utc::now(),
++            cxstatusline_stream_metrics: None,
+             thread_usage: thread_usage::ThreadUsageState::default(),
+             current_goal_status_indicator: None,
+             current_goal_status: None,
+diff --git a/codex-rs/tui/src/chatwidget/protocol.rs b/codex-rs/tui/src/chatwidget/protocol.rs
+index 85ea55133..617728d50 100644
+--- a/codex-rs/tui/src/chatwidget/protocol.rs
++++ b/codex-rs/tui/src/chatwidget/protocol.rs
+@@ -58,6 +58,27 @@ impl ChatWidget {
+                     );
+                 }
+             }
++            ServerNotification::ModelStreamMetrics(notification) => {
++                if !from_replay && self.cxstatusline_command.is_some() {
++                    let metrics = notification.metrics;
++                    if metrics
++                        .output_tps
++                        .is_some_and(|rate| rate.is_finite() && rate >= 0.0)
++                        || self.cxstatusline_stream_metrics.is_none()
++                    {
++                        self.cxstatusline_stream_metrics = Some(metrics);
++                    } else if let Some(last) = self.cxstatusline_stream_metrics.as_mut() {
++                        // Empty/buffered requests and item boundaries must not erase
++                        // the last valid reading. Its phase marks it as historical.
++                        last.phase = if metrics.phase == "streaming" {
++                            "waiting".to_owned()
++                        } else {
++                            metrics.phase
++                        };
++                    }
++                    self.refresh_status_line();
++                }
++            }
+             ServerNotification::ThreadTokenUsageUpdated(notification) => {
+                 self.set_token_info(Some(token_usage_info_from_app_server(
+                     notification.token_usage,
+diff --git a/codex-rs/tui/src/chatwidget/status_surfaces.rs b/codex-rs/tui/src/chatwidget/status_surfaces.rs
+index 46727cfc3..153ececa2 100644
+--- a/codex-rs/tui/src/chatwidget/status_surfaces.rs
++++ b/codex-rs/tui/src/chatwidget/status_surfaces.rs
+@@ -42,6 +42,16 @@ const TERMINAL_TITLE_ACTION_REQUIRED_INTERVAL: Duration = Duration::from_secs(1)
+ const TERMINAL_TITLE_ACTION_REQUIRED_PREFIX: &str = "[ ! ] Action Required";
+ const TERMINAL_TITLE_ACTION_REQUIRED_PREFIX_HIDDEN: &str = "[ . ] Action Required";
+ 
++/// cxstatusline: minimum spacing between renderer spawns. 18 refresh call sites; one process per
++/// call would be waste. Refreshes inside the window coalesce and run once it closes.
++const CXSTATUSLINE_MIN_INTERVAL: Duration = Duration::from_millis(100);
++
++/// cxstatusline: renderer wall-clock budget. Over budget -> killed, last good line kept.
++const CXSTATUSLINE_TIMEOUT: Duration = Duration::from_secs(1);
++
++/// cxstatusline: bounded account-rate-limit freshness for renderer payloads.
++const CXSTATUSLINE_RATE_LIMIT_REFRESH_INTERVAL: Duration = Duration::from_secs(/*secs*/ 60);
++
+ #[derive(Debug)]
+ /// Parsed status-surface configuration for one refresh pass.
+ ///
+@@ -159,7 +169,7 @@ impl ChatWidget {
+     }
+ 
+     fn sync_status_surface_shared_state(&mut self, selections: &StatusSurfaceSelections) {
+-        if !selections.uses_git_branch() {
++        if !selections.uses_git_branch() && self.cxstatusline_command.is_none() {
+             self.status_line_branch = None;
+             self.status_line_branch_pending = false;
+             self.status_line_branch_lookup_complete = false;
+@@ -171,7 +181,7 @@ impl ChatWidget {
+             }
+         }
+ 
+-        if !selections.uses_git_summary() {
++        if !selections.uses_git_summary() && self.cxstatusline_command.is_none() {
+             self.status_line_git_summary = None;
+             self.status_line_git_summary_pending = false;
+             self.status_line_git_summary_lookup_complete = false;
+@@ -200,6 +210,10 @@ impl ChatWidget {
+     }
+ 
+     fn refresh_status_line_from_selections(&mut self, selections: &StatusSurfaceSelections) {
++        if self.cxstatusline_command.is_some() {
++            self.cxstatusline_request_render();
++            self.cxstatusline_draw_shared_cell();
++        }
+         let enabled = !selections.status_line_items.is_empty();
+         self.bottom_pane.set_status_line_enabled(enabled);
+         if !enabled {
+@@ -432,7 +446,7 @@ impl ChatWidget {
+ 
+     pub(super) fn request_status_line_branch_refresh(&mut self) {
+         let selections = self.status_surface_selections();
+-        if !selections.uses_git_branch() {
++        if !selections.uses_git_branch() && self.cxstatusline_command.is_none() {
+             return;
+         }
+         let cwd = self.status_line_cwd().to_path_buf();
+@@ -442,7 +456,7 @@ impl ChatWidget {
+ 
+     pub(super) fn request_status_line_git_summary_refresh(&mut self) {
+         let selections = self.status_surface_selections();
+-        if !selections.uses_git_summary() {
++        if !selections.uses_git_summary() && self.cxstatusline_command.is_none() {
+             return;
+         }
+         let cwd = self.status_line_cwd().to_path_buf();
+@@ -593,6 +607,187 @@ impl ChatWidget {
+     ///
+     /// The resulting `StatusLineBranchUpdated` event carries the lookup cwd so callers can reject
+     /// stale completions after directory changes.
++    /// cxstatusline: called from `pre_draw_tick`. Draws fresh renderer output without spawning,
++    /// and replays one coalesced refresh once the throttle window has closed.
++    pub(super) fn cxstatusline_pre_draw_tick(&mut self) {
++        if self.cxstatusline_command.is_none() {
++            return;
++        }
++        self.cxstatusline_rate_limit_tick(Instant::now());
++        if self.cxstatusline_fresh.swap(false, Ordering::AcqRel) {
++            self.cxstatusline_draw_shared_cell();
++        }
++        if !self.cxstatusline_dirty || self.cxstatusline_pending.load(Ordering::Acquire) {
++            return;
++        }
++        if let Some(remaining) = self.cxstatusline_throttle_remaining(Instant::now()) {
++            self.frame_requester.schedule_frame_in(remaining);
++            return;
++        }
++        self.cxstatusline_dirty = false;
++        self.refresh_status_line();
++    }
++
++    /// Requests fresh account limits for renderer payloads at most once per minute.
++    pub(super) fn cxstatusline_rate_limit_tick(&mut self, now: Instant) {
++        if self.cxstatusline_command.is_none()
++            || !self.should_prefetch_rate_limits()
++            || self.cxstatusline_rate_limit_pending
++        {
++            return;
++        }
++        if let Some(last_requested_at) = self.cxstatusline_rate_limit_last_requested_at {
++            let elapsed = now.saturating_duration_since(last_requested_at);
++            if elapsed < CXSTATUSLINE_RATE_LIMIT_REFRESH_INTERVAL {
++                self.frame_requester
++                    .schedule_frame_in(CXSTATUSLINE_RATE_LIMIT_REFRESH_INTERVAL - elapsed);
++                return;
++            }
++        }
++        self.cxstatusline_rate_limit_pending = true;
++        self.cxstatusline_rate_limit_last_requested_at = Some(now);
++        self.app_event_tx.send(AppEvent::RefreshRateLimits {
++            origin: crate::app_event::RateLimitRefreshOrigin::CxStatusLine,
++        });
++        self.frame_requester
++            .schedule_frame_in(CXSTATUSLINE_RATE_LIMIT_REFRESH_INTERVAL);
++    }
++
++    pub(crate) fn finish_cxstatusline_rate_limit_refresh(&mut self) {
++        self.cxstatusline_rate_limit_pending = false;
++        // The completed read changed the payload source; schedule one renderer run.
++        self.cxstatusline_dirty = true;
++    }
++
++    /// Draw the last complete external block in its own rows, keeping native status intact.
++    /// A poisoned lock leaves the previously rendered block untouched.
++    fn cxstatusline_draw_shared_cell(&mut self) -> bool {
++        let rendered = match self.cxstatusline_output.lock() {
++            Ok(guard) => guard.clone(),
++            Err(_) => return true,
++        };
++        let Some(rendered) = rendered else {
++            return false;
++        };
++        self.bottom_pane.set_cxstatusline_block(rendered);
++        true
++    }
++
++    fn cxstatusline_throttle_remaining(&self, now: Instant) -> Option<Duration> {
++        let last = self.cxstatusline_last_spawn_at?;
++        let elapsed = now.saturating_duration_since(last);
++        (elapsed < CXSTATUSLINE_MIN_INTERVAL).then(|| CXSTATUSLINE_MIN_INTERVAL - elapsed)
++    }
++
++    /// cxstatusline: spawn the renderer with a payload v1 snapshot, unless one is in flight or the
++    /// throttle window is open - then remember to run again. Mirrors `request_status_line_branch`.
++    fn cxstatusline_request_render(&mut self) {
++        let Some(argv) = self.cxstatusline_command.clone() else {
++            return;
++        };
++        let now = Instant::now();
++        if self.cxstatusline_pending.load(Ordering::Acquire)
++            || self.cxstatusline_throttle_remaining(now).is_some()
++        {
++            self.cxstatusline_dirty = true;
++            self.frame_requester
++                .schedule_frame_in(CXSTATUSLINE_MIN_INTERVAL);
++            return;
++        }
++        let payload = self.cxstatusline_payload_v1().to_string();
++        self.cxstatusline_pending.store(true, Ordering::Release);
++        self.cxstatusline_last_spawn_at = Some(now);
++        let output = self.cxstatusline_output.clone();
++        let pending = self.cxstatusline_pending.clone();
++        let fresh = self.cxstatusline_fresh.clone();
++        let frame_requester = self.frame_requester.clone();
++        tokio::spawn(async move {
++            if let Some(block) = cxstatusline_run(&argv, payload).await
++                && let Ok(mut guard) = output.lock()
++            {
++                *guard = Some(block);
++                fresh.store(true, Ordering::Release);
++            }
++            pending.store(false, Ordering::Release);
++            frame_requester.schedule_frame();
++        });
++    }
++
++    /// cxstatusline: typed snapshot of the git state behind the native git status-line items.
++    fn cxstatusline_git_v1(&self) -> serde_json::Value {
++        use serde_json::json;
++        let summary = self.status_line_git_summary.as_ref();
++        json!({
++            "branch": self.status_line_branch.as_deref(),
++            "changes": summary
++                .and_then(|summary| summary.branch_change_stats.as_ref())
++                .map(|stats| json!({ "additions": stats.additions, "deletions": stats.deletions })),
++            "pr": summary
++                .and_then(|summary| summary.pull_request.as_ref())
++                .map(|pull_request| pull_request.number),
++        })
++    }
++
++    /// cxstatusline: typed snapshot of the state behind every native status-line item.
++    /// `null` means "unavailable right now", same as an absent key. Enum-valued fields carry
++    /// Codex's own serde/strum identifiers (`on-request`, `workspace-write`), never display text.
++    fn cxstatusline_payload_v1(&self) -> serde_json::Value {
++        use serde_json::json;
++        let cwd = self.status_line_cwd().to_path_buf();
++        let project_root = self.status_line_project_root_for_cwd(&cwd);
++        let codex_limits = self.rate_limit_snapshots_by_limit_id.get("codex");
++        let window = |w: Option<(&RateLimitWindowDisplay, bool)>| {
++            w.map(|(window, _is_secondary)| {
++                json!({
++                    "used": window.used_percent / 100.0,
++                    "resets_at": window.resets_at_unix.and_then(cxstatusline_iso8601),
++                })
++            })
++        };
++        let used_tokens = {
++            let total = self.status_line_total_usage().blended_total();
++            (total > 0).then_some(total)
++        };
++        let usage = self.token_info.as_ref().map(|info| &info.total_token_usage);
++        let context_tokens = self
++            .token_info
++            .as_ref()
++            .map(|info| info.last_token_usage.tokens_in_context_window());
++        json!({
++            "payload_version": 1,
++            "stream_metrics": self.cxstatusline_stream_metrics,
++            "model": {
++                "name": self.model_display_name(),
++                "reasoning": self.reasoning_display_name(),
++            },
++            "git": self.cxstatusline_git_v1(),
++            "usage": {
++                "context_used": self.status_line_context_used_percent().map(|p| p as f64 / 100.0),
++                "context_remaining": self.status_line_context_remaining_percent().map(|p| p as f64 / 100.0),
++                "context_tokens": context_tokens,
++                "context_window": self.status_line_context_window_size(),
++                "used_tokens": used_tokens,
++                "input_tokens": usage.map(|usage| usage.input_tokens),
++                "output_tokens": usage.map(|usage| usage.output_tokens),
++                "cached_input_tokens": usage.map(|usage| usage.cached_input_tokens),
++                "five_hour": window(codex_limits.and_then(five_hour_status_window)),
++                "weekly": window(codex_limits.and_then(weekly_status_window)),
++            },
++            "session": {
++                "id": self.thread_id.map(|id| id.to_string()),
++                "cwd": cwd.to_string_lossy(),
++                "project_root": project_root.map(|p| p.to_string_lossy().into_owned()),
++                "hostname": os_host_name(),
++                "approval_mode": self.config.permissions.approval_policy.value().to_string(),
++                "permissions": self.config.legacy_sandbox_policy().to_string(),
++                "run_state": self.run_state_status_text().to_lowercase(),
++                "codex_version": crate::version::CODEX_CLI_VERSION,
++                "started_at": self.cxstatusline_started_at.to_rfc3339_opts(chrono::SecondsFormat::Secs, /*use_z*/ true),
++                "thread_title": self.thread_name.clone(),
++            },
++        })
++    }
++
+     fn request_status_line_branch(&mut self, cwd: PathBuf) {
+         if self.status_line_branch_pending {
+             return;
+@@ -1274,3 +1469,58 @@ where
+     }
+     (items, invalid)
+ }
++
++/// cxstatusline: seconds since the Unix epoch -> RFC 3339 UTC.
++fn cxstatusline_iso8601(seconds: i64) -> Option<String> {
++    chrono::DateTime::<chrono::Utc>::from_timestamp(seconds, 0)
++        .map(|dt| dt.to_rfc3339_opts(chrono::SecondsFormat::Secs, /*use_z*/ true))
++}
++
++/// cxstatusline: run the external renderer once. `None` on spawn failure, non-zero exit, timeout,
++/// malformed, blank, or oversized stdout - the caller keeps the previous complete block.
++async fn cxstatusline_run(argv: &[String], payload: String) -> Option<Vec<Line<'static>>> {
++    use tokio::io::AsyncWriteExt;
++    let (program, args) = argv.split_first()?;
++    let mut command = tokio::process::Command::new(program);
++    // The renderer receives pipes rather than a terminal. Supplying the TUI's current width
++    // avoids slow process-table probes on hosts with many processes and tracks every resize.
++    if std::env::var_os("CXSTATUSLINE_WIDTH").is_none()
++        && std::env::var_os("CCSTATUSLINE_WIDTH").is_none()
++        && let Ok((columns, _)) = crossterm::terminal::size()
++        && columns > 0
++    {
++        command.env("CXSTATUSLINE_WIDTH", columns.to_string());
++    }
++    let mut child = command
++        .args(args)
++        .stdin(std::process::Stdio::piped())
++        .stdout(std::process::Stdio::piped())
++        .stderr(std::process::Stdio::null())
++        .kill_on_drop(true)
++        .spawn()
++        .ok()?;
++    let mut stdin = child.stdin.take()?;
++    stdin.write_all(payload.as_bytes()).await.ok()?;
++    // Drop closes the pipe so the renderer sees EOF.
++    drop(stdin);
++    let output = tokio::time::timeout(CXSTATUSLINE_TIMEOUT, child.wait_with_output())
++        .await
++        .ok()?
++        .ok()?;
++    if !output.status.success() {
++        return None;
++    }
++    cxstatusline_parse_output(&String::from_utf8_lossy(&output.stdout))
++}
++
++/// Parse all renderer rows before exposing them to the shared block; a malformed block never
++/// replaces the last complete render.
++pub(super) fn cxstatusline_parse_output(text: &str) -> Option<Vec<Line<'static>>> {
++    let text = text.strip_suffix('\n').unwrap_or(text);
++    let rows: Vec<_> = text.split('\n').collect();
++    ((1..=3).contains(&rows.len()) && rows.iter().all(|line| !line.trim().is_empty())).then(|| {
++        rows.into_iter()
++            .map(codex_ansi_escape::ansi_escape_line)
++            .collect()
++    })
++}
+diff --git a/codex-rs/tui/src/chatwidget/tests/status_and_layout.rs b/codex-rs/tui/src/chatwidget/tests/status_and_layout.rs
+index 307e1f512..a001889a5 100644
+--- a/codex-rs/tui/src/chatwidget/tests/status_and_layout.rs
++++ b/codex-rs/tui/src/chatwidget/tests/status_and_layout.rs
+@@ -1,5 +1,9 @@
++use std::time::Duration;
++use std::time::Instant;
++
+ use super::helpers::drain_insert_history_transcript;
+ use super::*;
++use crate::app_event::RateLimitRefreshOrigin;
+ use crate::bottom_pane::goal_status_indicator_line;
+ use crate::chatwidget::ThreadUsageOutcome;
+ use crate::chatwidget::rate_limits::NUDGE_MODEL_SLUG;
+@@ -40,6 +44,280 @@ async fn finalized_voice_transcript_renders_beside_the_streamed_cell() {
+     }
+ }
+ 
++struct CxLocalGitRunner;
++
++impl crate::workspace_command::WorkspaceCommandExecutor for CxLocalGitRunner {
++    fn run(
++        &self,
++        command: crate::workspace_command::WorkspaceCommand,
++    ) -> std::pin::Pin<
++        Box<
++            dyn std::future::Future<
++                    Output = Result<
++                        crate::workspace_command::WorkspaceCommandOutput,
++                        crate::workspace_command::WorkspaceCommandError,
++                    >,
++                > + Send
++                + '_,
++        >,
++    > {
++        Box::pin(async move {
++            // Only local Git runs: PR probes must never contact the owner's GitHub account.
++            if command.argv.first().map(String::as_str) != Some("git") {
++                return Ok(crate::workspace_command::WorkspaceCommandOutput {
++                    exit_code: 1,
++                    stdout: String::new(),
++                    stderr: String::new(),
++                });
++            }
++            let mut process = tokio::process::Command::new("git");
++            process.args(&command.argv[1..]).kill_on_drop(true);
++            if let Some(cwd) = command.cwd {
++                process.current_dir(cwd);
++            }
++            for (key, value) in command.env {
++                if let Some(value) = value {
++                    process.env(key, value);
++                } else {
++                    process.env_remove(key);
++                }
++            }
++            let output = tokio::time::timeout(command.timeout, process.output())
++                .await
++                .expect("git timeout")
++                .expect("git runs");
++            Ok(crate::workspace_command::WorkspaceCommandOutput {
++                exit_code: output.status.code().unwrap_or(1),
++                stdout: String::from_utf8_lossy(&output.stdout).into_owned(),
++                stderr: String::from_utf8_lossy(&output.stderr).into_owned(),
++            })
++        })
++    }
++}
++
++#[tokio::test]
++async fn cxstatusline_git_values_change_after_a_turn() {
++    let repo = tempfile::tempdir().expect("temp repo");
++    let git = |args: &[&str]| {
++        let output = std::process::Command::new("git")
++            .args(args)
++            .current_dir(repo.path())
++            .output()
++            .expect("git runs");
++        assert!(
++            output.status.success(),
++            "{}",
++            String::from_utf8_lossy(&output.stderr)
++        );
++    };
++    git(&["init", "-b", "main"]);
++    git(&[
++        "-c",
++        "user.name=Test",
++        "-c",
++        "user.email=test@example.com",
++        "commit",
++        "--allow-empty",
++        "-m",
++        "base",
++    ]);
++    let (mut chat, mut rx, _ops) = make_chatwidget_manual(/*model_override*/ None).await;
++    chat.config.cwd = AbsolutePathBuf::try_from(repo.path().to_path_buf()).expect("absolute cwd");
++    chat.current_cwd = Some(repo.path().to_path_buf());
++    chat.local_settings.tui.status_line = Some(vec![]);
++    chat.local_settings.tui.terminal_title = Some(vec![]);
++    chat.cxstatusline_command = Some(vec!["unused-renderer".into()]);
++    // Exercise collection without launching a renderer during completion callbacks.
++    chat.cxstatusline_pending.store(true, Ordering::Release);
++    chat.workspace_command_runner = Some(std::sync::Arc::new(CxLocalGitRunner));
++    for (branch, changes) in [("main", "No changes"), ("feature", "+1 -0")] {
++        if branch == "feature" {
++            git(&["checkout", "-b", "feature"]);
++            std::fs::write(repo.path().join("file"), "one line\n").expect("write change");
++            git(&["add", "file"]);
++            git(&[
++                "-c",
++                "user.name=Test",
++                "-c",
++                "user.email=test@example.com",
++                "commit",
++                "-m",
++                "change",
++            ]);
++        }
++        handle_turn_completed(&mut chat, "turn-1", /*duration_ms*/ None);
++        assert!(chat.status_line_branch_pending && chat.status_line_git_summary_pending);
++        tokio::time::timeout(Duration::from_secs(/*secs*/ 10), async {
++            while chat.status_line_branch_pending || chat.status_line_git_summary_pending {
++                match rx.recv().await.expect("completion event") {
++                    AppEvent::StatusLineBranchUpdated { cwd, branch } => {
++                        chat.set_status_line_branch(cwd, branch)
++                    }
++                    AppEvent::StatusLineGitSummaryUpdated { cwd, summary } => {
++                        chat.set_status_line_git_summary(cwd, summary)
++                    }
++                    _ => {}
++                }
++            }
++        })
++        .await
++        .expect("Git refresh completes");
++        assert_eq!(chat.status_line_branch.as_deref(), Some(branch));
++        assert_eq!(
++            chat.status_line_value_for_item(crate::bottom_pane::StatusLineItem::BranchChanges),
++            Some(changes.into())
++        );
++    }
++}
++
++#[tokio::test]
++async fn cxstatusline_git_refresh_does_not_require_native_items() {
++    for mode in ["disabled", "cx", "native"] {
++        let (mut chat, _rx, _ops) = make_chatwidget_manual(/*model_override*/ None).await;
++        install_noop_workspace_command_runner(&mut chat);
++        chat.local_settings.tui.status_line = Some(if mode == "native" {
++            vec!["git-branch".into(), "branch-changes".into()]
++        } else {
++            vec![]
++        });
++        chat.local_settings.tui.terminal_title = Some(vec![]);
++        chat.cxstatusline_command = (mode == "cx").then(|| vec!["unused-renderer".into()]);
++        let cwd = chat.config.cwd.to_path_buf();
++        chat.status_line_branch_cwd = Some(cwd.clone());
++        chat.status_line_git_summary_cwd = Some(cwd);
++        chat.status_line_branch_lookup_complete = true;
++        chat.status_line_git_summary_lookup_complete = true;
++        chat.request_status_line_branch_refresh();
++        chat.request_status_line_git_summary_refresh();
++        assert_eq!(
++            (
++                chat.status_line_branch_pending,
++                chat.status_line_git_summary_pending
++            ),
++            (mode != "disabled", mode != "disabled"),
++            "refresh mode {mode}"
++        );
++    }
++}
++
++#[test]
++fn cxstatusline_accepts_complete_rows_and_rejects_invalid_blocks() {
++    assert_eq!(
++        super::super::status_surfaces::cxstatusline_parse_output("one\ntwo\nthree\n")
++            .expect("three non-blank rows")
++            .len(),
++        3
++    );
++    assert!(super::super::status_surfaces::cxstatusline_parse_output("one\n\nthree\n").is_none());
++    assert!(super::super::status_surfaces::cxstatusline_parse_output("one\ntwo\n\n").is_none());
++    assert!(
++        super::super::status_surfaces::cxstatusline_parse_output("one\ntwo\nthree\nfour\n")
++            .is_none()
++    );
++}
++
++#[tokio::test]
++async fn cxstatusline_keeps_native_status_after_async_renderer_refresh() {
++    let (mut chat, _rx, _ops) = make_chatwidget_manual(/*model_override*/ None).await;
++    install_noop_workspace_command_runner(&mut chat);
++    chat.local_settings.tui.status_line =
++        Some(vec!["model-with-reasoning".into(), "current-dir".into()]);
++    chat.refresh_status_line();
++    let native = chat
++        .bottom_pane
++        .status_line_text()
++        .expect("native status configured");
++    chat.cxstatusline_command = Some(vec!["unused-renderer".into()]);
++    chat.cxstatusline_pending.store(true, Ordering::Release);
++    *chat.cxstatusline_output.lock().unwrap() = Some(vec![Line::from("Out: ~42 t/s")]);
++    chat.cxstatusline_fresh.store(true, Ordering::Release);
++    chat.cxstatusline_pre_draw_tick();
++    chat.refresh_status_line();
++    assert_eq!(
++        chat.bottom_pane.status_line_text().as_deref(),
++        Some(native.as_str())
++    );
++    for width in [40, 83, 120] {
++        let height = chat.desired_height(width);
++        let mut terminal = Terminal::new(TestBackend::new(width, height)).unwrap();
++        terminal
++            .draw(|frame| chat.render(frame.area(), frame.buffer_mut()))
++            .unwrap();
++        let screen = normalized_backend_snapshot(terminal.backend());
++        assert!(
++            screen.contains("Out: ~42 t/s"),
++            "plugin row at width {width}"
++        );
++    }
++}
++
++#[tokio::test]
++async fn cxstatusline_rate_limit_tick_requires_command_and_chatgpt_auth() {
++    let (mut chat, mut rx, _op_rx) = make_chatwidget_manual(/*model_override*/ None).await;
++    let now = Instant::now();
++
++    chat.cxstatusline_rate_limit_tick(now);
++    assert!(matches!(
++        rx.try_recv(),
++        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
++    ));
++
++    chat.cxstatusline_command = Some(vec!["renderer".to_string()]);
++    chat.cxstatusline_rate_limit_tick(now);
++    assert!(matches!(
++        rx.try_recv(),
++        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
++    ));
++
++    set_chatgpt_auth(&mut chat);
++    chat.cxstatusline_rate_limit_tick(now);
++    assert!(matches!(
++        rx.try_recv(),
++        Ok(AppEvent::RefreshRateLimits {
++            origin: RateLimitRefreshOrigin::CxStatusLine,
++        })
++    ));
++}
++
++#[tokio::test]
++async fn cxstatusline_rate_limit_completion_releases_next_minute_tick() {
++    let (mut chat, mut rx, _op_rx) = make_chatwidget_manual(/*model_override*/ None).await;
++    chat.cxstatusline_command = Some(vec!["renderer".to_string()]);
++    set_chatgpt_auth(&mut chat);
++    let now = Instant::now();
++
++    chat.cxstatusline_rate_limit_tick(now);
++    assert!(matches!(
++        rx.try_recv(),
++        Ok(AppEvent::RefreshRateLimits {
++            origin: RateLimitRefreshOrigin::CxStatusLine,
++        })
++    ));
++    assert!(chat.cxstatusline_rate_limit_pending);
++
++    chat.cxstatusline_rate_limit_tick(now + Duration::from_secs(/*secs*/ 59));
++    assert!(matches!(
++        rx.try_recv(),
++        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
++    ));
++
++    chat.finish_cxstatusline_rate_limit_refresh();
++    assert!(!chat.cxstatusline_rate_limit_pending);
++    chat.cxstatusline_rate_limit_tick(now + Duration::from_secs(/*secs*/ 59));
++    assert!(matches!(
++        rx.try_recv(),
++        Err(tokio::sync::mpsc::error::TryRecvError::Empty)
++    ));
++
++    chat.cxstatusline_rate_limit_tick(now + Duration::from_secs(/*secs*/ 60));
++    assert!(matches!(
++        rx.try_recv(),
++        Ok(AppEvent::RefreshRateLimits {
++            origin: RateLimitRefreshOrigin::CxStatusLine,
++        })
++    ));
++}
++
+ fn enable_test_ambient_pet(chat: &mut ChatWidget) {
+     chat.set_pet_image_support_for_tests(crate::pets::PetImageSupport::Supported(
+         crate::pets::ImageProtocol::Kitty,
+diff --git a/codex-rs/tui/src/status/rate_limits.rs b/codex-rs/tui/src/status/rate_limits.rs
+index c22868b62..df65a54aa 100644
+--- a/codex-rs/tui/src/status/rate_limits.rs
++++ b/codex-rs/tui/src/status/rate_limits.rs
+@@ -72,6 +72,8 @@ pub(crate) struct RateLimitWindowDisplay {
+     pub used_percent: f64,
+     /// Human-readable local reset time.
+     pub resets_at: Option<String>,
++    /// cxstatusline: raw reset time, seconds since the Unix epoch, when the server provided one.
++    pub resets_at_unix: Option<i64>,
+     /// Window length in minutes when provided by the server.
+     pub window_minutes: Option<i64>,
+ }
+@@ -92,6 +94,7 @@ impl RateLimitWindowDisplay {
+         Self {
+             used_percent: f64::from(window.used_percent),
+             resets_at,
++            resets_at_unix: window.resets_at,
+             window_minutes: window.window_duration_mins,
+         }
+     }
+@@ -460,6 +463,7 @@ mod tests {
+         RateLimitWindowDisplay {
+             used_percent,
+             resets_at: Some("soon".to_string()),
++            resets_at_unix: None,
+             window_minutes: Some(300),
+         }
+     }
+@@ -522,11 +526,13 @@ mod tests {
+             primary: Some(RateLimitWindowDisplay {
+                 used_percent: 20.0,
+                 resets_at: Some("soon".to_string()),
++                resets_at_unix: None,
+                 window_minutes: Some(60),
+             }),
+             secondary: Some(RateLimitWindowDisplay {
+                 used_percent: 40.0,
+                 resets_at: Some("later".to_string()),
++                resets_at_unix: None,
+                 window_minutes: Some(2 * 60),
+             }),
+             credits: None,
+diff --git a/codex-rs/tui/src/status/tests.rs b/codex-rs/tui/src/status/tests.rs
+index c6e33d8fc..1b442c02a 100644
+--- a/codex-rs/tui/src/status/tests.rs
++++ b/codex-rs/tui/src/status/tests.rs
+@@ -70,6 +70,7 @@ fn stale_monthly_limit_marks_fresh_rolling_snapshot_stale() {
+         primary: Some(RateLimitWindowDisplay {
+             used_percent: 20.0,
+             resets_at: Some("soon".to_string()),
++            resets_at_unix: None,
+             window_minutes: Some(300),
+         }),
+         secondary: None,
+@@ -1881,11 +1882,13 @@ async fn transcript_overlay_remeasures_status_after_rate_limit_refresh() {
+             primary: Some(RateLimitWindowDisplay {
+                 used_percent: 45.0,
+                 resets_at: Some("soon".to_string()),
++                resets_at_unix: None,
+                 window_minutes: Some(300),
+             }),
+             secondary: Some(RateLimitWindowDisplay {
+                 used_percent: 30.0,
+                 resets_at: Some("later".to_string()),
++                resets_at_unix: None,
+                 window_minutes: Some(10_080),
+             }),
+             credits: None,

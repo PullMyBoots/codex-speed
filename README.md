@@ -20,7 +20,7 @@ bash install.sh
 
 After installation, run `codex-speed`. You can also keep using `codex` if `~/.local/bin` comes before other Codex installations in your PATH.
 
-**The first installation builds a modified CLI.** Stock Codex lacks the external status line and streaming metrics interfaces this customization needs. This repository contains scripts and a source patch; it does not bundle Codex, Node, or Rust. Installation downloads upstream source, Rust, and build dependencies, may take tens of minutes, and can use more than 20 GiB of disk space. An existing installation with the required native metrics support is reused without compilation.
+**The first installation builds a modified CLI.** Stock Codex lacks the external status line and streaming metrics interfaces this customization needs. This repository contains scripts and source patches; it does not bundle Codex, Node, or Rust. Installation downloads upstream source, Rust, and build dependencies, may take tens of minutes, and can use more than 20 GiB of disk space. An existing installation with the required native metrics support is reused without compilation.
 
 ## Display and labels
 
@@ -56,7 +56,7 @@ For example, a tool call with exposed reasoning may go through: `think` (generat
 
 - Requires Python **3.9+**, Git, and C/C++ build tools. Node/npm is not required. The installer installs Rust in your user directory if needed.
 - Tested on Linux x86_64. A source build path is provided for macOS but has not been tested on a Mac. On Windows, use WSL2; there is no native Windows installer.
-- There is no Codex version allowlist or supported-version range check. The patch is based on **0.163.0**. For other source tags, the installer attempts to apply the patch and reports actual conflicts without automatically downgrading. There are no startup version probes.
+- Source ports are included for **0.160.0, 0.160.1, 0.161.0, 0.162.0, 0.162.1, and 0.163.0**. See the [compatibility and verification matrix](docs/COMPATIBILITY.md) for what has actually been tested. There is no Codex version allowlist: source metadata orders the patch candidates, and applicability checks decide which patch to use. Other tags are attempted without automatically downgrading. There are no startup version probes, and future releases are not automatically guaranteed compatible.
 - Your existing `~/.codex` or `CODEX_HOME` is used. No author API keys, routing, or personal settings are copied. Your model selection, login information, native `/statusline` choices, proxy settings, and shell startup files are preserved.
 - The modified CLI is installed in `~/.local/share/codex-speed`, build caches in `~/.cache/codex-speed`, and launchers in `~/.local/bin`. Existing launchers with the same names are backed up first. Original npm/native Codex binaries are preserved.
 - Ordinary terminal launches use a private backend to load the native metrics events. Explicit `--remote` connections are preserved, but the remote backend must also support those events.
@@ -78,4 +78,4 @@ python3 -m unittest discover -s tests -v
 bash install.sh doctor
 ```
 
-The native implementation and its tests are in `patches/codex.patch`; the installer handles the full build process. The patch includes bridge code adapted from [cxstatusline](https://github.com/adrijshikhar/cxstatusline). This repository's lightweight renderer uses only the Python standard library. See [VALIDATION.md](docs/VALIDATION.md) (Chinese) for the scope and limitations of the initial release validation.
+The native implementation and its tests are in `patches/codex.patch`, with release-specific ports beside it; the installer handles the full build process. The patch includes bridge code adapted from [cxstatusline](https://github.com/adrijshikhar/cxstatusline). This repository's lightweight renderer uses only the Python standard library. See the [compatibility matrix](docs/COMPATIBILITY.md) for current checks and [VALIDATION.md](docs/VALIDATION.md) (Chinese) for the initial release validation.

@@ -7,9 +7,9 @@
 1. 把本仓库 clone 到用户持久目录（例如 `~/.local/share/codex-speed-src`），并读 README.md 与 docs/INSTALL.md。不要把仓库放进用户无关的项目目录。
 2. 运行 `bash install.sh doctor`。确认 Python 3.9+、Git、C/C++ 编译工具、make、pkg-config 与 OpenSSL 开发库。缺少系统依赖时按系统包管理器补齐；无法执行时明确报告缺少的依赖。
 3. 在仓库目录运行 `bash install.sh`。有原生测速接口时自动复用；否则自动选择已安装 Codex 的源码版本、应用补丁、准备 Rust 和经校验的 V8、构建 CLI、创建启动入口。首次安装有大量下载和编译，持续执行到结束；构建日志出现警告不等于失败。
-4. 安装器不执行 `codex --version` 来检查兼容性。版本来自原生包的 codex-package.json，仅用于选择源码标签。没有版本白名单或上限下限。补丁冲突是实际代码问题，不能解释为版本政策拒绝；不要偷偷切回 0.163.0。
+4. 安装器不执行 `codex --version` 来检查兼容性。原生包的 codex-package.json 用于选择源码标签，源码 Cargo.toml 的版本仅用于优先选择相应依赖锁文件的补丁。已有 0.160.0、0.160.1、0.161.0、0.162.0、0.162.1、0.163.0 的源码移植；实际验证范围见 docs/COMPATIBILITY.md。没有版本白名单或上限下限；没有同名补丁时仍逐一尝试已有补丁。补丁冲突是实际代码问题，不能解释为版本政策拒绝；不要偷偷切回 0.163.0。
 5. 自动定位失败时，找到现有包目录并传入 `--codex-package PATH`。npm 安装通常位于 `npm root -g` 下的 `@openai/codex/node_modules/@openai/codex-*/vendor/*`，目录应含 codex-package.json、codex-path、codex-resources。可用 `--upstream-version VERSION` 明确选源码。
-6. 构建/补丁失败时先解决实际报错并重试。源码是 0.163.0 以外的标签且补丁冲突时，可按仓库意图调整补丁并验证；不得移除真实测速改用会话平均耗时凑数。不得在失败时宣称安装完成。
+6. 构建/补丁失败时先解决实际报错并重试。标签不在已有移植中或遇到补丁冲突时，可按仓库意图调整补丁并验证；不得移除真实测速改用会话平均耗时凑数。不得在失败时宣称安装完成，也不得把干净应用补丁的检查宣称为已通过完整构建或跨平台验收。
 7. 验证 `~/.local/bin/codex-speed --help` 成功，以及隔离样例能被轻量渲染器渲染：
    ```bash
    printf '%s\n' '{"stream_metrics":{"phase":"streaming","stream_kind":"tool","output_tps":42.5}}' | python3 render.py

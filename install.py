@@ -97,15 +97,37 @@ def binary_at(package,name):
     return next((p for p in (package/'bin'/name,package/name) if p.is_file()),package/'bin'/name)
 
 
+def patch_candidates(source):
+    # Release metadata only orders candidates. A missing name never rejects a
+    # source tree: every available patch still gets an actual applicability check.
+    candidates=[]
+    manifest=Path(source)/'codex-rs/Cargo.toml'
+    if manifest.is_file():
+        version=re.search(r'\[workspace.package\]\s*version\s*=\s*"([^"]+)"',manifest.read_text())
+        if version and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._+-]*',version.group(1)):
+            candidates.append(ROOT/'patches'/('codex-'+version.group(1)+'.patch'))
+    candidates.extend([PATCH,*sorted((ROOT/'patches').glob('codex-*.patch'))])
+    return list(dict.fromkeys(p for p in candidates if p.is_file()))
+
+
 def check_patch(source,apply=False):
     base=['git','-C',str(source),'apply']
-    probe=subprocess.run(base+['--check',str(PATCH)],capture_output=True,text=True)
-    if probe.returncode==0:
-        if apply:run(base+[str(PATCH)])
-        return 'applicable'
-    reverse=subprocess.run(base+['--reverse','--check',str(PATCH)],capture_output=True,text=True)
-    if reverse.returncode==0:return 'already applied'
-    raise RuntimeError('Patch does not apply. No version whitelist was consulted; this is an actual source conflict.\n'+probe.stderr+'\nAsk Codex to adapt patches/codex.patch to this source. No launcher was changed.')
+    candidates=patch_candidates(source)
+    # Inspect every reverse check first so a retry never layers another variant
+    # onto a source tree that already contains one of our complete patches.
+    for patch in candidates:
+        reverse=subprocess.run(base+['--reverse','--check',str(patch)],capture_output=True,text=True)
+        if reverse.returncode==0:return 'already applied'
+    failures=[]
+    for patch in candidates:
+        probe=subprocess.run(base+['--check',str(patch)],capture_output=True,text=True)
+        if probe.returncode==0:
+            if apply:
+                print('Selected source patch: '+patch.name,flush=True)
+                run(base+[str(patch)])
+            return 'applicable'
+        failures.append(patch.name+':\n'+probe.stderr)
+    raise RuntimeError('No source patch applies. No version whitelist was consulted; these are actual source conflicts.\n'+'\n'.join(failures)+'\nAsk Codex to adapt a patch to this source. No launcher was changed.')
 
 
 def build_package(args,cache,env,installed):
