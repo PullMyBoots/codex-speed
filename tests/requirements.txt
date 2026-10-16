@@ -1,0 +1,2 @@
+# Optional terminal integration tests only; not an installation/runtime dependency.
+pyte==0.8.2

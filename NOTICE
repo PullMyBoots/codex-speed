@@ -1,0 +1,6 @@
+codex-speed integrates a source patch for OpenAI Codex (Apache-2.0).
+The TUI bridge portions of patches/codex.patch were adapted from cxstatusline
+0.13.1, https://github.com/adrijshikhar/cxstatusline (MIT).
+Its license is retained in patches/CXSTATUSLINE-LICENSE.
+The lightweight Python renderer and installer are distributed under Apache-2.0.
+This project is an independent customization and is not an official OpenAI plugin.
